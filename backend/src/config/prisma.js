@@ -1,7 +1,14 @@
-import { PrismaClient } from '@prisma/client';
+import { PrismaClient } from '../generated/prisma/client.js';
+import { PrismaPg } from '@prisma/adapter-pg';
 import logger from './logger.js';
+import { env } from './env.js';
+
+const adapter = new PrismaPg({
+  connectionString: env.DATABASE_URL,
+});
 
 const prisma = new PrismaClient({
+  adapter,
   log: [
     { emit: 'event', level: 'query' },
     { emit: 'event', level: 'error' },
@@ -9,8 +16,7 @@ const prisma = new PrismaClient({
   ],
 });
 
-// Log queries only in development
-if (process.env.NODE_ENV === 'development') {
+if (env.NODE_ENV === 'development') {
   prisma.$on('query', (e) => {
     logger.debug({ query: e.query, duration: e.duration }, 'Prisma query');
   });
