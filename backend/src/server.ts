@@ -1,12 +1,11 @@
-import express from 'express';
+import express, { Request, Response, NextFunction } from 'express';
 import cors from 'cors';
 import helmet from 'helmet';
 import rateLimit from 'express-rate-limit';
 import pinoHttp from 'pino-http';
-import { env } from './src/config/env.js';
-import logger from './src/config/logger.js';
-import prisma from './src/config/prisma.js';
-
+import { env } from './config/env.js';
+import logger from './config/logger.js';
+import prisma from './config/prisma.js';
 
 const app = express();
 
@@ -28,7 +27,7 @@ app.use(
 // Rate limiting: prevent brute-force + DDoS (OWASP)
 const limiter = rateLimit({
   windowMs: 15 * 60 * 1000, // 15 minutes
-  max: 100, // 100 requests per IP
+  max: 100,
   standardHeaders: true,
   legacyHeaders: false,
   message: { error: 'Too many requests, please try again later.' },
@@ -38,7 +37,7 @@ app.use('/api', limiter);
 // Stricter limit for auth routes
 const authLimiter = rateLimit({
   windowMs: 15 * 60 * 1000,
-  max: 10, // 10 attempts per 15 min
+  max: 10,
   message: { error: 'Too many auth attempts, try again later.' },
 });
 app.use('/api/auth', authLimiter);
@@ -57,9 +56,8 @@ app.use(express.urlencoded({ extended: true, limit: '1mb' }));
 app.use(
   pinoHttp({
     logger,
-    // Don't log health checks
     autoLogging: {
-      ignore: (req) => req.url === '/health',
+      ignore: (req: Request) => req.url === '/health',
     },
   })
 );
@@ -68,7 +66,7 @@ app.use(
 // HEALTH CHECK
 // ============================================
 
-app.get('/health', async (req, res) => {
+app.get('/health', async (_req: Request, res: Response) => {
   try {
     await prisma.$queryRaw`SELECT 1`;
     res.json({
@@ -86,7 +84,7 @@ app.get('/health', async (req, res) => {
 // ROUTES (we'll add these next)
 // ============================================
 
-app.get('/api', (req, res) => {
+app.get('/api', (_req: Request, res: Response) => {
   res.json({ message: 'Bag Store API v1' });
 });
 
@@ -94,11 +92,11 @@ app.get('/api', (req, res) => {
 // 404 + ERROR HANDLERS
 // ============================================
 
-app.use((req, res) => {
+app.use((_req: Request, res: Response) => {
   res.status(404).json({ error: 'Route not found' });
 });
 
-app.use((err, req, res, next) => {
+app.use((err: any, _req: Request, res: Response, _next: NextFunction) => {
   logger.error({ err }, 'Unhandled error');
   res.status(err.status || 500).json({
     error: env.NODE_ENV === 'production' ? 'Server error' : err.message,
