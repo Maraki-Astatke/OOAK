@@ -17,16 +17,16 @@ const prisma = new PrismaClient({
 });
 
 if (env.NODE_ENV === 'development') {
-  prisma.$on('query', (e) => {
+  prisma.$on('query', (e: any) => {
     logger.debug({ query: e.query, duration: e.duration }, 'Prisma query');
   });
 }
 
-prisma.$on('error', (e) => {
+prisma.$on('error', (e: any) => {
   logger.error({ message: e.message }, 'Prisma error');
 });
 
-prisma.$on('warn', (e) => {
+prisma.$on('warn', (e: any) => {
   logger.warn({ message: e.message }, 'Prisma warning');
 });
 
