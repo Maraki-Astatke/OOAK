@@ -6,6 +6,7 @@ import pinoHttp from 'pino-http';
 import { env } from './config/env.js';
 import logger from './config/logger.js';
 import prisma from './config/prisma.js';
+import authRoutes from './routes/auth.routes.js';
 
 const app = express();
 
@@ -80,9 +81,13 @@ app.get('/health', async (_req: Request, res: Response) => {
   }
 });
 
+
+
 // ============================================
-// ROUTES (we'll add these next)
+// ROUTES
 // ============================================
+
+app.use('/api/auth', authRoutes);
 
 app.get('/api', (_req: Request, res: Response) => {
   res.json({ message: 'Bag Store API v1' });
