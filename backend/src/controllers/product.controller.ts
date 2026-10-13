@@ -30,7 +30,7 @@ export const getProducts = async (req: Request, res: Response) => {
     });
     return res.json({ products });
   } catch (error) {
-    logger.error({ error }, 'Get products failed');
+    logger.error({ err: error }, 'Get products failed');
     return res.status(500).json({ error: 'Failed to fetch products' });
   }
 };
@@ -44,7 +44,7 @@ export const getProduct = async (req: Request, res: Response) => {
     }
     return res.json({ product });
   } catch (error) {
-    logger.error({ error }, 'Get product failed');
+    logger.error({ err: error }, 'Get product failed');
     return res.status(500).json({ error: 'Failed to fetch product' });
   }
 };
@@ -58,7 +58,7 @@ export const getProductBySlugHandler = async (req: Request, res: Response) => {
     }
     return res.json({ product });
   } catch (error) {
-    logger.error({ error }, 'Get product by slug failed');
+    logger.error({ err: error }, 'Get product by slug failed');
     return res.status(500).json({ error: 'Failed to fetch product' });
   }
 };
@@ -68,7 +68,7 @@ export const getCategories = async (_req: Request, res: Response) => {
     const categories = await listCategories();
     return res.json({ categories });
   } catch (error) {
-    logger.error({ error }, 'Get categories failed');
+    logger.error({ err: error }, 'Get categories failed');
     return res.status(500).json({ error: 'Failed to fetch categories' });
   }
 };
@@ -90,7 +90,7 @@ export const createProductHandler = async (req: Request, res: Response) => {
     logger.info({ productId: product.id }, 'Product created');
     return res.status(201).json({ product });
   } catch (error) {
-    logger.error({ error }, 'Create product failed');
+    logger.error({ err: error }, 'Create product failed');
     return res.status(500).json({ error: 'Failed to create product' });
   }
 };
@@ -109,7 +109,7 @@ export const updateProductHandler = async (req: Request, res: Response) => {
     logger.info({ productId: id }, 'Product updated');
     return res.json({ product });
   } catch (error) {
-    logger.error({ error }, 'Update product failed');
+    logger.error({ err: error }, 'Update product failed');
     return res.status(500).json({ error: 'Failed to update product' });
   }
 };
@@ -121,7 +121,7 @@ export const deleteProductHandler = async (req: Request, res: Response) => {
     logger.info({ productId: id }, 'Product deleted');
     return res.json({ success: true });
   } catch (error) {
-    logger.error({ error }, 'Delete product failed');
+    logger.error({ err: error }, 'Delete product failed');
     return res.status(500).json({ error: 'Failed to delete product' });
   }
 };
@@ -138,7 +138,7 @@ export const createCategoryHandler = async (req: Request, res: Response) => {
     const category = await createCategory(parsed.data);
     return res.status(201).json({ category });
   } catch (error) {
-    logger.error({ error }, 'Create category failed');
+    logger.error({ err: error }, 'Create category failed');
     return res.status(500).json({ error: 'Failed to create category' });
   }
 };
