@@ -8,6 +8,7 @@ import logger from './config/logger.js';
 import prisma from './config/prisma.js';
 import authRoutes from './routes/auth.routes.js';
 import productRoutes from './routes/product.routes.js';
+import cartRoutes from './routes/cart.routes.js';
 
 const app = express();
 
@@ -90,6 +91,7 @@ app.get('/health', async (_req: Request, res: Response) => {
 
 app.use('/api/auth', authRoutes);
 app.use('/api/products', productRoutes);
+app.use('/api/cart', cartRoutes);
 
 app.get('/api', (_req: Request, res: Response) => {
   res.json({ message: 'Bag Store API v1' });
