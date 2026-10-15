@@ -110,3 +110,20 @@ export const adminUpdateStatus = async (req: Request, res: Response) => {
     return res.status(500).json({ error: 'Failed to update order status' });
   }
 };
+
+// ============================================
+// ADMIN: MARK BALANCE PAID
+// ============================================
+
+export const adminMarkBalancePaid = async (req: Request, res: Response) => {
+  try {
+    const { id } = req.params;
+    const { markBalancePaid } = await import('../services/order.service.js');
+    const order = await markBalancePaid(id);
+    logger.info({ orderId: id }, 'Balance marked as paid');
+    return res.json({ order });
+  } catch (error: any) {
+    logger.error({ err: error }, 'Mark balance paid failed');
+    return res.status(400).json({ error: error.message || 'Failed' });
+  }
+};
