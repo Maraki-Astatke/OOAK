@@ -10,6 +10,9 @@ import authRoutes from './routes/auth.routes.js';
 import productRoutes from './routes/product.routes.js';
 import cartRoutes from './routes/cart.routes.js';
 import orderRoutes from './routes/order.routes.js';
+import receiptRoutes from './routes/receipt.routes.js';
+import path from 'path';
+import { fileURLToPath } from 'url';
 
 const app = express();
 
@@ -94,11 +97,17 @@ app.use('/api/auth', authRoutes);
 app.use('/api/products', productRoutes);
 app.use('/api/cart', cartRoutes);
 app.use('/api/orders', orderRoutes);
+app.use('/api/receipts', receiptRoutes);
 
 app.get('/api', (_req: Request, res: Response) => {
   res.json({ message: 'Bag Store API v1' });
 });
 
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+
+app.use('/uploads', express.static(path.join(__dirname, '..', 'uploads')));
 // ============================================
 // 404 + ERROR HANDLERS
 // ============================================
