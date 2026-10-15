@@ -25,6 +25,7 @@ model User {
   createdAt     DateTime @default(now())
   updatedAt     DateTime @updatedAt
   cart Cart?
+  orders Order[]
 
   @@index([email])
 }
@@ -51,6 +52,7 @@ model Product {
   createdAt   DateTime @default(now())
   updatedAt   DateTime @updatedAt
   cartItems CartItem[]
+  orderItems OrderItem[]
  
   @@index([categoryId])
   @@index([slug])
@@ -76,4 +78,52 @@ model CartItem {
 
   @@unique([cartId, productId])
   @@index([cartId])
+}
+enum OrderStatus {
+  PENDING
+  CONFIRMED
+  SHIPPED
+  DELIVERED
+  CANCELLED
+}
+
+enum PaymentStatus {
+  UNPAID
+  DEPOSIT_PAID
+  PAID
+  REFUNDED
+}
+
+model Order {
+  id            String        @id @default(cuid())
+  userId        String
+  user          User          @relation(fields: [userId], references: [id])
+  status        OrderStatus   @default(PENDING)
+  paymentStatus PaymentStatus @default(UNPAID)
+  total         Decimal       @db.Decimal(10, 2)
+  depositAmount Decimal?      @db.Decimal(10, 2)
+  shippingName  String
+  shippingPhone String
+  shippingAddr  String
+  notes         String?
+  items         OrderItem[]
+  createdAt     DateTime      @default(now())
+  updatedAt     DateTime      @updatedAt
+
+  @@index([userId])
+  @@index([status])
+}
+
+model OrderItem {
+  id          String   @id @default(cuid())
+  orderId     String
+  order       Order    @relation(fields: [orderId], references: [id], onDelete: Cascade)
+  productId   String
+  product     Product  @relation(fields: [productId], references: [id])
+  productName String
+  price       Decimal  @db.Decimal(10, 2)
+  quantity    Int
+  createdAt   DateTime @default(now())
+
+  @@index([orderId])
 }
