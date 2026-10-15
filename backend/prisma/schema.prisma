@@ -26,6 +26,7 @@ model User {
   updatedAt     DateTime @updatedAt
   cart Cart?
   orders Order[]
+  receipts Receipt[]
 
   @@index([email])
 }
@@ -107,8 +108,10 @@ model Order {
   shippingAddr  String
   notes         String?
   items         OrderItem[]
+  receipts Receipt[]
   createdAt     DateTime      @default(now())
   updatedAt     DateTime      @updatedAt
+
 
   @@index([userId])
   @@index([status])
@@ -126,4 +129,30 @@ model OrderItem {
   createdAt   DateTime @default(now())
 
   @@index([orderId])
+}
+enum ReceiptStatus {
+  PENDING
+  APPROVED
+  REJECTED
+}
+
+model Receipt {
+  id          String        @id @default(cuid())
+  orderId     String
+  order       Order         @relation(fields: [orderId], references: [id], onDelete: Cascade)
+  userId      String
+  user        User          @relation(fields: [userId], references: [id])
+  fileUrl     String
+  fileName    String
+  fileHash    String        @unique  // duplicate detection
+  amount      Decimal       @db.Decimal(10, 2)
+  status      ReceiptStatus @default(PENDING)
+  adminNote   String?
+  reviewedAt  DateTime?
+  createdAt   DateTime      @default(now())
+  updatedAt   DateTime      @updatedAt
+
+  @@index([orderId])
+  @@index([userId])
+  @@index([status])
 }
