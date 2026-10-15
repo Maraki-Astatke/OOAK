@@ -54,6 +54,8 @@ model Product {
   updatedAt   DateTime @updatedAt
   cartItems CartItem[]
   orderItems OrderItem[]
+  isPreOrder       Boolean   @default(false)
+  preOrderShipDate DateTime?
  
   @@index([categoryId])
   @@index([slug])
@@ -109,6 +111,10 @@ model Order {
   notes         String?
   items         OrderItem[]
   receipts Receipt[]
+  isPreOrder   Boolean @default(false)
+  balanceDue   Decimal? @db.Decimal(10, 2)
+  balancePaid  Boolean @default(false)
+
   createdAt     DateTime      @default(now())
   updatedAt     DateTime      @updatedAt
 

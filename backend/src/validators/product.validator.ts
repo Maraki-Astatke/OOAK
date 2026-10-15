@@ -9,6 +9,8 @@ export const createProductSchema = z.object({
   images: z.array(z.string().url()).default([]),
   isActive: z.boolean().default(true),
   categoryId: z.string().optional(),
+  isPreOrder: z.boolean().default(false),
+  preOrderShipDate: z.string().datetime().optional(),
 });
 
 export const updateProductSchema = createProductSchema.partial();

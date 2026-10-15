@@ -605,10 +605,6 @@ export type EnumReceiptStatusFieldUpdateOperationsInput = {
   set?: $Enums.ReceiptStatus
 }
 
-export type NullableDateTimeFieldUpdateOperationsInput = {
-  set?: Date | string | null
-}
-
 export type ReceiptCreateWithoutUserInput = {
   id?: string
   fileUrl: string

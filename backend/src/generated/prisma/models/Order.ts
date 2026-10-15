@@ -29,11 +29,13 @@ export type AggregateOrder = {
 export type OrderAvgAggregateOutputType = {
   total: runtime.Decimal | null
   depositAmount: runtime.Decimal | null
+  balanceDue: runtime.Decimal | null
 }
 
 export type OrderSumAggregateOutputType = {
   total: runtime.Decimal | null
   depositAmount: runtime.Decimal | null
+  balanceDue: runtime.Decimal | null
 }
 
 export type OrderMinAggregateOutputType = {
@@ -47,6 +49,9 @@ export type OrderMinAggregateOutputType = {
   shippingPhone: string | null
   shippingAddr: string | null
   notes: string | null
+  isPreOrder: boolean | null
+  balanceDue: runtime.Decimal | null
+  balancePaid: boolean | null
   createdAt: Date | null
   updatedAt: Date | null
 }
@@ -62,6 +67,9 @@ export type OrderMaxAggregateOutputType = {
   shippingPhone: string | null
   shippingAddr: string | null
   notes: string | null
+  isPreOrder: boolean | null
+  balanceDue: runtime.Decimal | null
+  balancePaid: boolean | null
   createdAt: Date | null
   updatedAt: Date | null
 }
@@ -77,6 +85,9 @@ export type OrderCountAggregateOutputType = {
   shippingPhone: number
   shippingAddr: number
   notes: number
+  isPreOrder: number
+  balanceDue: number
+  balancePaid: number
   createdAt: number
   updatedAt: number
   _all: number
@@ -86,11 +97,13 @@ export type OrderCountAggregateOutputType = {
 export type OrderAvgAggregateInputType = {
   total?: true
   depositAmount?: true
+  balanceDue?: true
 }
 
 export type OrderSumAggregateInputType = {
   total?: true
   depositAmount?: true
+  balanceDue?: true
 }
 
 export type OrderMinAggregateInputType = {
@@ -104,6 +117,9 @@ export type OrderMinAggregateInputType = {
   shippingPhone?: true
   shippingAddr?: true
   notes?: true
+  isPreOrder?: true
+  balanceDue?: true
+  balancePaid?: true
   createdAt?: true
   updatedAt?: true
 }
@@ -119,6 +135,9 @@ export type OrderMaxAggregateInputType = {
   shippingPhone?: true
   shippingAddr?: true
   notes?: true
+  isPreOrder?: true
+  balanceDue?: true
+  balancePaid?: true
   createdAt?: true
   updatedAt?: true
 }
@@ -134,6 +153,9 @@ export type OrderCountAggregateInputType = {
   shippingPhone?: true
   shippingAddr?: true
   notes?: true
+  isPreOrder?: true
+  balanceDue?: true
+  balancePaid?: true
   createdAt?: true
   updatedAt?: true
   _all?: true
@@ -236,6 +258,9 @@ export type OrderGroupByOutputType = {
   shippingPhone: string
   shippingAddr: string
   notes: string | null
+  isPreOrder: boolean
+  balanceDue: runtime.Decimal | null
+  balancePaid: boolean
   createdAt: Date
   updatedAt: Date
   _count: OrderCountAggregateOutputType | null
@@ -274,6 +299,9 @@ export type OrderWhereInput = {
   shippingPhone?: Prisma.StringFilter<"Order"> | string
   shippingAddr?: Prisma.StringFilter<"Order"> | string
   notes?: Prisma.StringNullableFilter<"Order"> | string | null
+  isPreOrder?: Prisma.BoolFilter<"Order"> | boolean
+  balanceDue?: Prisma.DecimalNullableFilter<"Order"> | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  balancePaid?: Prisma.BoolFilter<"Order"> | boolean
   createdAt?: Prisma.DateTimeFilter<"Order"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"Order"> | Date | string
   user?: Prisma.XOR<Prisma.UserScalarRelationFilter, Prisma.UserWhereInput>
@@ -292,6 +320,9 @@ export type OrderOrderByWithRelationInput = {
   shippingPhone?: Prisma.SortOrder
   shippingAddr?: Prisma.SortOrder
   notes?: Prisma.SortOrderInput | Prisma.SortOrder
+  isPreOrder?: Prisma.SortOrder
+  balanceDue?: Prisma.SortOrderInput | Prisma.SortOrder
+  balancePaid?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
   user?: Prisma.UserOrderByWithRelationInput
@@ -313,6 +344,9 @@ export type OrderWhereUniqueInput = Prisma.AtLeast<{
   shippingPhone?: Prisma.StringFilter<"Order"> | string
   shippingAddr?: Prisma.StringFilter<"Order"> | string
   notes?: Prisma.StringNullableFilter<"Order"> | string | null
+  isPreOrder?: Prisma.BoolFilter<"Order"> | boolean
+  balanceDue?: Prisma.DecimalNullableFilter<"Order"> | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  balancePaid?: Prisma.BoolFilter<"Order"> | boolean
   createdAt?: Prisma.DateTimeFilter<"Order"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"Order"> | Date | string
   user?: Prisma.XOR<Prisma.UserScalarRelationFilter, Prisma.UserWhereInput>
@@ -331,6 +365,9 @@ export type OrderOrderByWithAggregationInput = {
   shippingPhone?: Prisma.SortOrder
   shippingAddr?: Prisma.SortOrder
   notes?: Prisma.SortOrderInput | Prisma.SortOrder
+  isPreOrder?: Prisma.SortOrder
+  balanceDue?: Prisma.SortOrderInput | Prisma.SortOrder
+  balancePaid?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
   _count?: Prisma.OrderCountOrderByAggregateInput
@@ -354,6 +391,9 @@ export type OrderScalarWhereWithAggregatesInput = {
   shippingPhone?: Prisma.StringWithAggregatesFilter<"Order"> | string
   shippingAddr?: Prisma.StringWithAggregatesFilter<"Order"> | string
   notes?: Prisma.StringNullableWithAggregatesFilter<"Order"> | string | null
+  isPreOrder?: Prisma.BoolWithAggregatesFilter<"Order"> | boolean
+  balanceDue?: Prisma.DecimalNullableWithAggregatesFilter<"Order"> | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  balancePaid?: Prisma.BoolWithAggregatesFilter<"Order"> | boolean
   createdAt?: Prisma.DateTimeWithAggregatesFilter<"Order"> | Date | string
   updatedAt?: Prisma.DateTimeWithAggregatesFilter<"Order"> | Date | string
 }
@@ -368,6 +408,9 @@ export type OrderCreateInput = {
   shippingPhone: string
   shippingAddr: string
   notes?: string | null
+  isPreOrder?: boolean
+  balanceDue?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  balancePaid?: boolean
   createdAt?: Date | string
   updatedAt?: Date | string
   user: Prisma.UserCreateNestedOneWithoutOrdersInput
@@ -386,6 +429,9 @@ export type OrderUncheckedCreateInput = {
   shippingPhone: string
   shippingAddr: string
   notes?: string | null
+  isPreOrder?: boolean
+  balanceDue?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  balancePaid?: boolean
   createdAt?: Date | string
   updatedAt?: Date | string
   items?: Prisma.OrderItemUncheckedCreateNestedManyWithoutOrderInput
@@ -402,6 +448,9 @@ export type OrderUpdateInput = {
   shippingPhone?: Prisma.StringFieldUpdateOperationsInput | string
   shippingAddr?: Prisma.StringFieldUpdateOperationsInput | string
   notes?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  isPreOrder?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  balanceDue?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  balancePaid?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   user?: Prisma.UserUpdateOneRequiredWithoutOrdersNestedInput
@@ -420,6 +469,9 @@ export type OrderUncheckedUpdateInput = {
   shippingPhone?: Prisma.StringFieldUpdateOperationsInput | string
   shippingAddr?: Prisma.StringFieldUpdateOperationsInput | string
   notes?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  isPreOrder?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  balanceDue?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  balancePaid?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   items?: Prisma.OrderItemUncheckedUpdateManyWithoutOrderNestedInput
@@ -437,6 +489,9 @@ export type OrderCreateManyInput = {
   shippingPhone: string
   shippingAddr: string
   notes?: string | null
+  isPreOrder?: boolean
+  balanceDue?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  balancePaid?: boolean
   createdAt?: Date | string
   updatedAt?: Date | string
 }
@@ -451,6 +506,9 @@ export type OrderUpdateManyMutationInput = {
   shippingPhone?: Prisma.StringFieldUpdateOperationsInput | string
   shippingAddr?: Prisma.StringFieldUpdateOperationsInput | string
   notes?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  isPreOrder?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  balanceDue?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  balancePaid?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
@@ -466,6 +524,9 @@ export type OrderUncheckedUpdateManyInput = {
   shippingPhone?: Prisma.StringFieldUpdateOperationsInput | string
   shippingAddr?: Prisma.StringFieldUpdateOperationsInput | string
   notes?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  isPreOrder?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  balanceDue?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  balancePaid?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
@@ -491,6 +552,9 @@ export type OrderCountOrderByAggregateInput = {
   shippingPhone?: Prisma.SortOrder
   shippingAddr?: Prisma.SortOrder
   notes?: Prisma.SortOrder
+  isPreOrder?: Prisma.SortOrder
+  balanceDue?: Prisma.SortOrder
+  balancePaid?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
 }
@@ -498,6 +562,7 @@ export type OrderCountOrderByAggregateInput = {
 export type OrderAvgOrderByAggregateInput = {
   total?: Prisma.SortOrder
   depositAmount?: Prisma.SortOrder
+  balanceDue?: Prisma.SortOrder
 }
 
 export type OrderMaxOrderByAggregateInput = {
@@ -511,6 +576,9 @@ export type OrderMaxOrderByAggregateInput = {
   shippingPhone?: Prisma.SortOrder
   shippingAddr?: Prisma.SortOrder
   notes?: Prisma.SortOrder
+  isPreOrder?: Prisma.SortOrder
+  balanceDue?: Prisma.SortOrder
+  balancePaid?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
 }
@@ -526,6 +594,9 @@ export type OrderMinOrderByAggregateInput = {
   shippingPhone?: Prisma.SortOrder
   shippingAddr?: Prisma.SortOrder
   notes?: Prisma.SortOrder
+  isPreOrder?: Prisma.SortOrder
+  balanceDue?: Prisma.SortOrder
+  balancePaid?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
 }
@@ -533,6 +604,7 @@ export type OrderMinOrderByAggregateInput = {
 export type OrderSumOrderByAggregateInput = {
   total?: Prisma.SortOrder
   depositAmount?: Prisma.SortOrder
+  balanceDue?: Prisma.SortOrder
 }
 
 export type OrderScalarRelationFilter = {
@@ -636,6 +708,9 @@ export type OrderCreateWithoutUserInput = {
   shippingPhone: string
   shippingAddr: string
   notes?: string | null
+  isPreOrder?: boolean
+  balanceDue?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  balancePaid?: boolean
   createdAt?: Date | string
   updatedAt?: Date | string
   items?: Prisma.OrderItemCreateNestedManyWithoutOrderInput
@@ -652,6 +727,9 @@ export type OrderUncheckedCreateWithoutUserInput = {
   shippingPhone: string
   shippingAddr: string
   notes?: string | null
+  isPreOrder?: boolean
+  balanceDue?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  balancePaid?: boolean
   createdAt?: Date | string
   updatedAt?: Date | string
   items?: Prisma.OrderItemUncheckedCreateNestedManyWithoutOrderInput
@@ -698,6 +776,9 @@ export type OrderScalarWhereInput = {
   shippingPhone?: Prisma.StringFilter<"Order"> | string
   shippingAddr?: Prisma.StringFilter<"Order"> | string
   notes?: Prisma.StringNullableFilter<"Order"> | string | null
+  isPreOrder?: Prisma.BoolFilter<"Order"> | boolean
+  balanceDue?: Prisma.DecimalNullableFilter<"Order"> | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  balancePaid?: Prisma.BoolFilter<"Order"> | boolean
   createdAt?: Prisma.DateTimeFilter<"Order"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"Order"> | Date | string
 }
@@ -712,6 +793,9 @@ export type OrderCreateWithoutItemsInput = {
   shippingPhone: string
   shippingAddr: string
   notes?: string | null
+  isPreOrder?: boolean
+  balanceDue?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  balancePaid?: boolean
   createdAt?: Date | string
   updatedAt?: Date | string
   user: Prisma.UserCreateNestedOneWithoutOrdersInput
@@ -729,6 +813,9 @@ export type OrderUncheckedCreateWithoutItemsInput = {
   shippingPhone: string
   shippingAddr: string
   notes?: string | null
+  isPreOrder?: boolean
+  balanceDue?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  balancePaid?: boolean
   createdAt?: Date | string
   updatedAt?: Date | string
   receipts?: Prisma.ReceiptUncheckedCreateNestedManyWithoutOrderInput
@@ -760,6 +847,9 @@ export type OrderUpdateWithoutItemsInput = {
   shippingPhone?: Prisma.StringFieldUpdateOperationsInput | string
   shippingAddr?: Prisma.StringFieldUpdateOperationsInput | string
   notes?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  isPreOrder?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  balanceDue?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  balancePaid?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   user?: Prisma.UserUpdateOneRequiredWithoutOrdersNestedInput
@@ -777,6 +867,9 @@ export type OrderUncheckedUpdateWithoutItemsInput = {
   shippingPhone?: Prisma.StringFieldUpdateOperationsInput | string
   shippingAddr?: Prisma.StringFieldUpdateOperationsInput | string
   notes?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  isPreOrder?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  balanceDue?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  balancePaid?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   receipts?: Prisma.ReceiptUncheckedUpdateManyWithoutOrderNestedInput
@@ -792,6 +885,9 @@ export type OrderCreateWithoutReceiptsInput = {
   shippingPhone: string
   shippingAddr: string
   notes?: string | null
+  isPreOrder?: boolean
+  balanceDue?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  balancePaid?: boolean
   createdAt?: Date | string
   updatedAt?: Date | string
   user: Prisma.UserCreateNestedOneWithoutOrdersInput
@@ -809,6 +905,9 @@ export type OrderUncheckedCreateWithoutReceiptsInput = {
   shippingPhone: string
   shippingAddr: string
   notes?: string | null
+  isPreOrder?: boolean
+  balanceDue?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  balancePaid?: boolean
   createdAt?: Date | string
   updatedAt?: Date | string
   items?: Prisma.OrderItemUncheckedCreateNestedManyWithoutOrderInput
@@ -840,6 +939,9 @@ export type OrderUpdateWithoutReceiptsInput = {
   shippingPhone?: Prisma.StringFieldUpdateOperationsInput | string
   shippingAddr?: Prisma.StringFieldUpdateOperationsInput | string
   notes?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  isPreOrder?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  balanceDue?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  balancePaid?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   user?: Prisma.UserUpdateOneRequiredWithoutOrdersNestedInput
@@ -857,6 +959,9 @@ export type OrderUncheckedUpdateWithoutReceiptsInput = {
   shippingPhone?: Prisma.StringFieldUpdateOperationsInput | string
   shippingAddr?: Prisma.StringFieldUpdateOperationsInput | string
   notes?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  isPreOrder?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  balanceDue?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  balancePaid?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   items?: Prisma.OrderItemUncheckedUpdateManyWithoutOrderNestedInput
@@ -872,6 +977,9 @@ export type OrderCreateManyUserInput = {
   shippingPhone: string
   shippingAddr: string
   notes?: string | null
+  isPreOrder?: boolean
+  balanceDue?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  balancePaid?: boolean
   createdAt?: Date | string
   updatedAt?: Date | string
 }
@@ -886,6 +994,9 @@ export type OrderUpdateWithoutUserInput = {
   shippingPhone?: Prisma.StringFieldUpdateOperationsInput | string
   shippingAddr?: Prisma.StringFieldUpdateOperationsInput | string
   notes?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  isPreOrder?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  balanceDue?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  balancePaid?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   items?: Prisma.OrderItemUpdateManyWithoutOrderNestedInput
@@ -902,6 +1013,9 @@ export type OrderUncheckedUpdateWithoutUserInput = {
   shippingPhone?: Prisma.StringFieldUpdateOperationsInput | string
   shippingAddr?: Prisma.StringFieldUpdateOperationsInput | string
   notes?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  isPreOrder?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  balanceDue?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  balancePaid?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   items?: Prisma.OrderItemUncheckedUpdateManyWithoutOrderNestedInput
@@ -918,6 +1032,9 @@ export type OrderUncheckedUpdateManyWithoutUserInput = {
   shippingPhone?: Prisma.StringFieldUpdateOperationsInput | string
   shippingAddr?: Prisma.StringFieldUpdateOperationsInput | string
   notes?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  isPreOrder?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  balanceDue?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  balancePaid?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
@@ -973,6 +1090,9 @@ export type OrderSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = 
   shippingPhone?: boolean
   shippingAddr?: boolean
   notes?: boolean
+  isPreOrder?: boolean
+  balanceDue?: boolean
+  balancePaid?: boolean
   createdAt?: boolean
   updatedAt?: boolean
   user?: boolean | Prisma.UserDefaultArgs<ExtArgs>
@@ -992,6 +1112,9 @@ export type OrderSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Extensi
   shippingPhone?: boolean
   shippingAddr?: boolean
   notes?: boolean
+  isPreOrder?: boolean
+  balanceDue?: boolean
+  balancePaid?: boolean
   createdAt?: boolean
   updatedAt?: boolean
   user?: boolean | Prisma.UserDefaultArgs<ExtArgs>
@@ -1008,6 +1131,9 @@ export type OrderSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensi
   shippingPhone?: boolean
   shippingAddr?: boolean
   notes?: boolean
+  isPreOrder?: boolean
+  balanceDue?: boolean
+  balancePaid?: boolean
   createdAt?: boolean
   updatedAt?: boolean
   user?: boolean | Prisma.UserDefaultArgs<ExtArgs>
@@ -1024,11 +1150,14 @@ export type OrderSelectScalar = {
   shippingPhone?: boolean
   shippingAddr?: boolean
   notes?: boolean
+  isPreOrder?: boolean
+  balanceDue?: boolean
+  balancePaid?: boolean
   createdAt?: boolean
   updatedAt?: boolean
 }
 
-export type OrderOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "userId" | "status" | "paymentStatus" | "total" | "depositAmount" | "shippingName" | "shippingPhone" | "shippingAddr" | "notes" | "createdAt" | "updatedAt", ExtArgs["result"]["order"]>
+export type OrderOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "userId" | "status" | "paymentStatus" | "total" | "depositAmount" | "shippingName" | "shippingPhone" | "shippingAddr" | "notes" | "isPreOrder" | "balanceDue" | "balancePaid" | "createdAt" | "updatedAt", ExtArgs["result"]["order"]>
 export type OrderInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   user?: boolean | Prisma.UserDefaultArgs<ExtArgs>
   items?: boolean | Prisma.Order$itemsArgs<ExtArgs>
@@ -1060,6 +1189,9 @@ export type $OrderPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs 
     shippingPhone: string
     shippingAddr: string
     notes: string | null
+    isPreOrder: boolean
+    balanceDue: runtime.Decimal | null
+    balancePaid: boolean
     createdAt: Date
     updatedAt: Date
   }, ExtArgs["result"]["order"]>
@@ -1498,6 +1630,9 @@ export interface OrderFieldRefs {
   readonly shippingPhone: Prisma.FieldRef<"Order", 'String'>
   readonly shippingAddr: Prisma.FieldRef<"Order", 'String'>
   readonly notes: Prisma.FieldRef<"Order", 'String'>
+  readonly isPreOrder: Prisma.FieldRef<"Order", 'Boolean'>
+  readonly balanceDue: Prisma.FieldRef<"Order", 'Decimal'>
+  readonly balancePaid: Prisma.FieldRef<"Order", 'Boolean'>
   readonly createdAt: Prisma.FieldRef<"Order", 'DateTime'>
   readonly updatedAt: Prisma.FieldRef<"Order", 'DateTime'>
 }

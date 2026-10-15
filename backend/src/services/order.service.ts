@@ -20,21 +20,29 @@ export const createOrderFromCart = async (
     throw new Error('Cart is empty');
   }
 
-  // Calculate total + check stock
+  const hasPreOrder = cart.items.some((item) => item.product.isPreOrder);
+
   let total = 0;
   for (const item of cart.items) {
-    if (item.product.stock < item.quantity) {
+    if (!item.product.isPreOrder && item.product.stock < item.quantity) {
       throw new Error(`Not enough stock for ${item.product.name}`);
     }
     total += Number(item.product.price) * item.quantity;
   }
 
-  // Create order + items in a transaction
+  const depositAmount = hasPreOrder ? Number((total * 0.5).toFixed(2)) : null;
+  const balanceDue = hasPreOrder
+    ? Number((total - (depositAmount || 0)).toFixed(2))
+    : null;
+
   const order = await prisma.$transaction(async (tx) => {
     const created = await tx.order.create({
       data: {
         userId,
         total,
+        isPreOrder: hasPreOrder,
+        depositAmount,
+        balanceDue,
         shippingName: shipping.name,
         shippingPhone: shipping.phone,
         shippingAddr: shipping.address,
@@ -51,21 +59,42 @@ export const createOrderFromCart = async (
       include: { items: true },
     });
 
-    // Deduct stock
     for (const item of cart.items) {
-      await tx.product.update({
-        where: { id: item.productId },
-        data: { stock: { decrement: item.quantity } },
-      });
+      if (!item.product.isPreOrder) {
+        await tx.product.update({
+          where: { id: item.productId },
+          data: { stock: { decrement: item.quantity } },
+        });
+      }
     }
 
-    // Clear cart
     await tx.cartItem.deleteMany({ where: { cartId: cart.id } });
 
     return created;
   });
 
   return order;
+};
+
+// ============================================
+// MARK BALANCE PAID
+// ============================================
+
+export const markBalancePaid = async (orderId: string) => {
+  const order = await prisma.order.findUnique({ where: { id: orderId } });
+  if (!order) throw new Error('Order not found');
+  if (!order.isPreOrder) throw new Error('Not a pre-order');
+  if (order.balancePaid) throw new Error('Balance already paid');
+
+  return prisma.order.update({
+    where: { id: orderId },
+    data: {
+      balancePaid: true,
+      paymentStatus: 'PAID',
+      status: 'CONFIRMED',
+    },
+    include: { items: true },
+  });
 };
 
 // ============================================
@@ -102,7 +131,9 @@ export const listAllOrders = async (filters: {
   return prisma.order.findMany({
     where: {
       ...(filters.status && { status: filters.status as any }),
-      ...(filters.paymentStatus && { paymentStatus: filters.paymentStatus as any }),
+      ...(filters.paymentStatus && {
+        paymentStatus: filters.paymentStatus as any,
+      }),
     },
     include: {
       items: true,
@@ -130,10 +161,7 @@ export const getOrderById = async (orderId: string) => {
 // ADMIN: UPDATE STATUS
 // ============================================
 
-export const updateOrderStatus = async (
-  orderId: string,
-  status: string
-) => {
+export const updateOrderStatus = async (orderId: string, status: string) => {
   return prisma.order.update({
     where: { id: orderId },
     data: { status: status as any },

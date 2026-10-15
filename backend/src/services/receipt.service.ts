@@ -71,12 +71,38 @@ export const reviewReceipt = async (
       },
     });
 
-    // If approved, mark order as paid
     if (status === 'APPROVED') {
-      await tx.order.update({
+      const order = await tx.order.findUnique({
         where: { id: receipt.orderId },
-        data: { paymentStatus: 'PAID', status: 'CONFIRMED' },
       });
+
+      if (order) {
+        // If pre-order and deposit not yet paid → mark deposit paid
+        if (order.isPreOrder && order.paymentStatus === 'UNPAID') {
+          await tx.order.update({
+            where: { id: order.id },
+            data: { paymentStatus: 'DEPOSIT_PAID' },
+          });
+        }
+        // If pre-order and deposit already paid → mark balance paid
+        else if (order.isPreOrder && order.paymentStatus === 'DEPOSIT_PAID') {
+          await tx.order.update({
+            where: { id: order.id },
+            data: {
+              paymentStatus: 'PAID',
+              balancePaid: true,
+              status: 'CONFIRMED',
+            },
+          });
+        }
+        // Normal order → mark fully paid
+        else {
+          await tx.order.update({
+            where: { id: order.id },
+            data: { paymentStatus: 'PAID', status: 'CONFIRMED' },
+          });
+        }
+      }
     }
 
     return receipt;
