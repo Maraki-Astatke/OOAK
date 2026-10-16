@@ -58,7 +58,8 @@ export const ModelName = {
   CartItem: 'CartItem',
   Order: 'Order',
   OrderItem: 'OrderItem',
-  Receipt: 'Receipt'
+  Receipt: 'Receipt',
+  PartnerSubmission: 'PartnerSubmission'
 } as const
 
 export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -195,6 +196,25 @@ export const ReceiptScalarFieldEnum = {
 } as const
 
 export type ReceiptScalarFieldEnum = (typeof ReceiptScalarFieldEnum)[keyof typeof ReceiptScalarFieldEnum]
+
+
+export const PartnerSubmissionScalarFieldEnum = {
+  id: 'id',
+  partnerId: 'partnerId',
+  name: 'name',
+  description: 'description',
+  category: 'category',
+  price: 'price',
+  images: 'images',
+  status: 'status',
+  adminNote: 'adminNote',
+  reviewedAt: 'reviewedAt',
+  approvedProductId: 'approvedProductId',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type PartnerSubmissionScalarFieldEnum = (typeof PartnerSubmissionScalarFieldEnum)[keyof typeof PartnerSubmissionScalarFieldEnum]
 
 
 export const SortOrder = {

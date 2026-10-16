@@ -57,3 +57,8 @@ export type OrderItem = Prisma.OrderItemModel
  * 
  */
 export type Receipt = Prisma.ReceiptModel
+/**
+ * Model PartnerSubmission
+ * 
+ */
+export type PartnerSubmission = Prisma.PartnerSubmissionModel

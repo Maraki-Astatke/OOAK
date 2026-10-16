@@ -46,3 +46,12 @@ export const ReceiptStatus = {
 } as const
 
 export type ReceiptStatus = (typeof ReceiptStatus)[keyof typeof ReceiptStatus]
+
+
+export const SubmissionStatus = {
+  PENDING: 'PENDING',
+  APPROVED: 'APPROVED',
+  REJECTED: 'REJECTED'
+} as const
+
+export type SubmissionStatus = (typeof SubmissionStatus)[keyof typeof SubmissionStatus]

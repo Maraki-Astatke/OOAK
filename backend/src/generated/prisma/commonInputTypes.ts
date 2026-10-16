@@ -297,6 +297,23 @@ export type EnumReceiptStatusWithAggregatesFilter<$PrismaModel = never> = {
   _max?: Prisma.NestedEnumReceiptStatusFilter<$PrismaModel>
 }
 
+export type EnumSubmissionStatusFilter<$PrismaModel = never> = {
+  equals?: $Enums.SubmissionStatus | Prisma.EnumSubmissionStatusFieldRefInput<$PrismaModel>
+  in?: $Enums.SubmissionStatus[] | Prisma.ListEnumSubmissionStatusFieldRefInput<$PrismaModel>
+  notIn?: $Enums.SubmissionStatus[] | Prisma.ListEnumSubmissionStatusFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedEnumSubmissionStatusFilter<$PrismaModel> | $Enums.SubmissionStatus
+}
+
+export type EnumSubmissionStatusWithAggregatesFilter<$PrismaModel = never> = {
+  equals?: $Enums.SubmissionStatus | Prisma.EnumSubmissionStatusFieldRefInput<$PrismaModel>
+  in?: $Enums.SubmissionStatus[] | Prisma.ListEnumSubmissionStatusFieldRefInput<$PrismaModel>
+  notIn?: $Enums.SubmissionStatus[] | Prisma.ListEnumSubmissionStatusFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedEnumSubmissionStatusWithAggregatesFilter<$PrismaModel> | $Enums.SubmissionStatus
+  _count?: Prisma.NestedIntFilter<$PrismaModel>
+  _min?: Prisma.NestedEnumSubmissionStatusFilter<$PrismaModel>
+  _max?: Prisma.NestedEnumSubmissionStatusFilter<$PrismaModel>
+}
+
 export type NestedStringFilter<$PrismaModel = never> = {
   equals?: string | Prisma.StringFieldRefInput<$PrismaModel>
   in?: string[] | Prisma.ListStringFieldRefInput<$PrismaModel>
@@ -591,6 +608,23 @@ export type NestedEnumReceiptStatusWithAggregatesFilter<$PrismaModel = never> = 
   _count?: Prisma.NestedIntFilter<$PrismaModel>
   _min?: Prisma.NestedEnumReceiptStatusFilter<$PrismaModel>
   _max?: Prisma.NestedEnumReceiptStatusFilter<$PrismaModel>
+}
+
+export type NestedEnumSubmissionStatusFilter<$PrismaModel = never> = {
+  equals?: $Enums.SubmissionStatus | Prisma.EnumSubmissionStatusFieldRefInput<$PrismaModel>
+  in?: $Enums.SubmissionStatus[] | Prisma.ListEnumSubmissionStatusFieldRefInput<$PrismaModel>
+  notIn?: $Enums.SubmissionStatus[] | Prisma.ListEnumSubmissionStatusFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedEnumSubmissionStatusFilter<$PrismaModel> | $Enums.SubmissionStatus
+}
+
+export type NestedEnumSubmissionStatusWithAggregatesFilter<$PrismaModel = never> = {
+  equals?: $Enums.SubmissionStatus | Prisma.EnumSubmissionStatusFieldRefInput<$PrismaModel>
+  in?: $Enums.SubmissionStatus[] | Prisma.ListEnumSubmissionStatusFieldRefInput<$PrismaModel>
+  notIn?: $Enums.SubmissionStatus[] | Prisma.ListEnumSubmissionStatusFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedEnumSubmissionStatusWithAggregatesFilter<$PrismaModel> | $Enums.SubmissionStatus
+  _count?: Prisma.NestedIntFilter<$PrismaModel>
+  _min?: Prisma.NestedEnumSubmissionStatusFilter<$PrismaModel>
+  _max?: Prisma.NestedEnumSubmissionStatusFilter<$PrismaModel>
 }
 
 

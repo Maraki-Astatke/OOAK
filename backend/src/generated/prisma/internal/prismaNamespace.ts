@@ -404,7 +404,8 @@ export const ModelName = {
   CartItem: 'CartItem',
   Order: 'Order',
   OrderItem: 'OrderItem',
-  Receipt: 'Receipt'
+  Receipt: 'Receipt',
+  PartnerSubmission: 'PartnerSubmission'
 } as const
 
 export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -420,7 +421,7 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
     omit: GlobalOmitOptions
   }
   meta: {
-    modelProps: "user" | "category" | "product" | "cart" | "cartItem" | "order" | "orderItem" | "receipt"
+    modelProps: "user" | "category" | "product" | "cart" | "cartItem" | "order" | "orderItem" | "receipt" | "partnerSubmission"
     txIsolationLevel: TransactionIsolationLevel
   }
   model: {
@@ -1016,6 +1017,80 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
         }
       }
     }
+    PartnerSubmission: {
+      payload: Prisma.$PartnerSubmissionPayload<ExtArgs>
+      fields: Prisma.PartnerSubmissionFieldRefs
+      operations: {
+        findUnique: {
+          args: Prisma.PartnerSubmissionFindUniqueArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$PartnerSubmissionPayload> | null
+        }
+        findUniqueOrThrow: {
+          args: Prisma.PartnerSubmissionFindUniqueOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$PartnerSubmissionPayload>
+        }
+        findFirst: {
+          args: Prisma.PartnerSubmissionFindFirstArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$PartnerSubmissionPayload> | null
+        }
+        findFirstOrThrow: {
+          args: Prisma.PartnerSubmissionFindFirstOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$PartnerSubmissionPayload>
+        }
+        findMany: {
+          args: Prisma.PartnerSubmissionFindManyArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$PartnerSubmissionPayload>[]
+        }
+        create: {
+          args: Prisma.PartnerSubmissionCreateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$PartnerSubmissionPayload>
+        }
+        createMany: {
+          args: Prisma.PartnerSubmissionCreateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        createManyAndReturn: {
+          args: Prisma.PartnerSubmissionCreateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$PartnerSubmissionPayload>[]
+        }
+        delete: {
+          args: Prisma.PartnerSubmissionDeleteArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$PartnerSubmissionPayload>
+        }
+        update: {
+          args: Prisma.PartnerSubmissionUpdateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$PartnerSubmissionPayload>
+        }
+        deleteMany: {
+          args: Prisma.PartnerSubmissionDeleteManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateMany: {
+          args: Prisma.PartnerSubmissionUpdateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateManyAndReturn: {
+          args: Prisma.PartnerSubmissionUpdateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$PartnerSubmissionPayload>[]
+        }
+        upsert: {
+          args: Prisma.PartnerSubmissionUpsertArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$PartnerSubmissionPayload>
+        }
+        aggregate: {
+          args: Prisma.PartnerSubmissionAggregateArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AggregatePartnerSubmission>
+        }
+        groupBy: {
+          args: Prisma.PartnerSubmissionGroupByArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.PartnerSubmissionGroupByOutputType>[]
+        }
+        count: {
+          args: Prisma.PartnerSubmissionCountArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.PartnerSubmissionCountAggregateOutputType> | number
+        }
+      }
+    }
   }
 } & {
   other: {
@@ -1175,6 +1250,25 @@ export const ReceiptScalarFieldEnum = {
 export type ReceiptScalarFieldEnum = (typeof ReceiptScalarFieldEnum)[keyof typeof ReceiptScalarFieldEnum]
 
 
+export const PartnerSubmissionScalarFieldEnum = {
+  id: 'id',
+  partnerId: 'partnerId',
+  name: 'name',
+  description: 'description',
+  category: 'category',
+  price: 'price',
+  images: 'images',
+  status: 'status',
+  adminNote: 'adminNote',
+  reviewedAt: 'reviewedAt',
+  approvedProductId: 'approvedProductId',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type PartnerSubmissionScalarFieldEnum = (typeof PartnerSubmissionScalarFieldEnum)[keyof typeof PartnerSubmissionScalarFieldEnum]
+
+
 export const SortOrder = {
   asc: 'asc',
   desc: 'desc'
@@ -1321,6 +1415,20 @@ export type EnumReceiptStatusFieldRefInput<$PrismaModel> = FieldRefInputType<$Pr
  * Reference to a field of type 'ReceiptStatus[]'
  */
 export type ListEnumReceiptStatusFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'ReceiptStatus[]'>
+    
+
+
+/**
+ * Reference to a field of type 'SubmissionStatus'
+ */
+export type EnumSubmissionStatusFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'SubmissionStatus'>
+    
+
+
+/**
+ * Reference to a field of type 'SubmissionStatus[]'
+ */
+export type ListEnumSubmissionStatusFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'SubmissionStatus[]'>
     
 
 
@@ -1496,6 +1604,7 @@ export type GlobalOmitConfig = {
   order?: Prisma.OrderOmit
   orderItem?: Prisma.OrderItemOmit
   receipt?: Prisma.ReceiptOmit
+  partnerSubmission?: Prisma.PartnerSubmissionOmit
 }
 
 /* Types for Logging */
