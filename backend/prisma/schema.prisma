@@ -27,6 +27,7 @@ model User {
   cart Cart?
   orders Order[]
   receipts Receipt[]
+  partnerSubmissions PartnerSubmission[]
 
   @@index([email])
 }
@@ -160,5 +161,31 @@ model Receipt {
 
   @@index([orderId])
   @@index([userId])
+  @@index([status])
+}
+
+enum SubmissionStatus {
+  PENDING
+  APPROVED
+  REJECTED
+}
+
+model PartnerSubmission {
+  id            String           @id @default(cuid())
+  partnerId     String
+  partner       User             @relation(fields: [partnerId], references: [id], onDelete: Cascade)
+  name          String
+  description   String
+  category      String
+  price         Decimal          @db.Decimal(10, 2)
+  images        String[]
+  status        SubmissionStatus @default(PENDING)
+  adminNote     String?
+  reviewedAt    DateTime?
+  approvedProductId String?
+  createdAt     DateTime         @default(now())
+  updatedAt     DateTime         @updatedAt
+
+  @@index([partnerId])
   @@index([status])
 }
