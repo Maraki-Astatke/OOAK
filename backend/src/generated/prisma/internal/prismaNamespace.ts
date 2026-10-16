@@ -405,7 +405,11 @@ export const ModelName = {
   Order: 'Order',
   OrderItem: 'OrderItem',
   Receipt: 'Receipt',
-  PartnerSubmission: 'PartnerSubmission'
+  PartnerSubmission: 'PartnerSubmission',
+  GiftPackage: 'GiftPackage',
+  GiftItem: 'GiftItem',
+  Lookbook: 'Lookbook',
+  LookbookHotspot: 'LookbookHotspot'
 } as const
 
 export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -421,7 +425,7 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
     omit: GlobalOmitOptions
   }
   meta: {
-    modelProps: "user" | "category" | "product" | "cart" | "cartItem" | "order" | "orderItem" | "receipt" | "partnerSubmission"
+    modelProps: "user" | "category" | "product" | "cart" | "cartItem" | "order" | "orderItem" | "receipt" | "partnerSubmission" | "giftPackage" | "giftItem" | "lookbook" | "lookbookHotspot"
     txIsolationLevel: TransactionIsolationLevel
   }
   model: {
@@ -1091,6 +1095,302 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
         }
       }
     }
+    GiftPackage: {
+      payload: Prisma.$GiftPackagePayload<ExtArgs>
+      fields: Prisma.GiftPackageFieldRefs
+      operations: {
+        findUnique: {
+          args: Prisma.GiftPackageFindUniqueArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$GiftPackagePayload> | null
+        }
+        findUniqueOrThrow: {
+          args: Prisma.GiftPackageFindUniqueOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$GiftPackagePayload>
+        }
+        findFirst: {
+          args: Prisma.GiftPackageFindFirstArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$GiftPackagePayload> | null
+        }
+        findFirstOrThrow: {
+          args: Prisma.GiftPackageFindFirstOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$GiftPackagePayload>
+        }
+        findMany: {
+          args: Prisma.GiftPackageFindManyArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$GiftPackagePayload>[]
+        }
+        create: {
+          args: Prisma.GiftPackageCreateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$GiftPackagePayload>
+        }
+        createMany: {
+          args: Prisma.GiftPackageCreateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        createManyAndReturn: {
+          args: Prisma.GiftPackageCreateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$GiftPackagePayload>[]
+        }
+        delete: {
+          args: Prisma.GiftPackageDeleteArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$GiftPackagePayload>
+        }
+        update: {
+          args: Prisma.GiftPackageUpdateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$GiftPackagePayload>
+        }
+        deleteMany: {
+          args: Prisma.GiftPackageDeleteManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateMany: {
+          args: Prisma.GiftPackageUpdateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateManyAndReturn: {
+          args: Prisma.GiftPackageUpdateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$GiftPackagePayload>[]
+        }
+        upsert: {
+          args: Prisma.GiftPackageUpsertArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$GiftPackagePayload>
+        }
+        aggregate: {
+          args: Prisma.GiftPackageAggregateArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AggregateGiftPackage>
+        }
+        groupBy: {
+          args: Prisma.GiftPackageGroupByArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.GiftPackageGroupByOutputType>[]
+        }
+        count: {
+          args: Prisma.GiftPackageCountArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.GiftPackageCountAggregateOutputType> | number
+        }
+      }
+    }
+    GiftItem: {
+      payload: Prisma.$GiftItemPayload<ExtArgs>
+      fields: Prisma.GiftItemFieldRefs
+      operations: {
+        findUnique: {
+          args: Prisma.GiftItemFindUniqueArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$GiftItemPayload> | null
+        }
+        findUniqueOrThrow: {
+          args: Prisma.GiftItemFindUniqueOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$GiftItemPayload>
+        }
+        findFirst: {
+          args: Prisma.GiftItemFindFirstArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$GiftItemPayload> | null
+        }
+        findFirstOrThrow: {
+          args: Prisma.GiftItemFindFirstOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$GiftItemPayload>
+        }
+        findMany: {
+          args: Prisma.GiftItemFindManyArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$GiftItemPayload>[]
+        }
+        create: {
+          args: Prisma.GiftItemCreateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$GiftItemPayload>
+        }
+        createMany: {
+          args: Prisma.GiftItemCreateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        createManyAndReturn: {
+          args: Prisma.GiftItemCreateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$GiftItemPayload>[]
+        }
+        delete: {
+          args: Prisma.GiftItemDeleteArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$GiftItemPayload>
+        }
+        update: {
+          args: Prisma.GiftItemUpdateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$GiftItemPayload>
+        }
+        deleteMany: {
+          args: Prisma.GiftItemDeleteManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateMany: {
+          args: Prisma.GiftItemUpdateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateManyAndReturn: {
+          args: Prisma.GiftItemUpdateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$GiftItemPayload>[]
+        }
+        upsert: {
+          args: Prisma.GiftItemUpsertArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$GiftItemPayload>
+        }
+        aggregate: {
+          args: Prisma.GiftItemAggregateArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AggregateGiftItem>
+        }
+        groupBy: {
+          args: Prisma.GiftItemGroupByArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.GiftItemGroupByOutputType>[]
+        }
+        count: {
+          args: Prisma.GiftItemCountArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.GiftItemCountAggregateOutputType> | number
+        }
+      }
+    }
+    Lookbook: {
+      payload: Prisma.$LookbookPayload<ExtArgs>
+      fields: Prisma.LookbookFieldRefs
+      operations: {
+        findUnique: {
+          args: Prisma.LookbookFindUniqueArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$LookbookPayload> | null
+        }
+        findUniqueOrThrow: {
+          args: Prisma.LookbookFindUniqueOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$LookbookPayload>
+        }
+        findFirst: {
+          args: Prisma.LookbookFindFirstArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$LookbookPayload> | null
+        }
+        findFirstOrThrow: {
+          args: Prisma.LookbookFindFirstOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$LookbookPayload>
+        }
+        findMany: {
+          args: Prisma.LookbookFindManyArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$LookbookPayload>[]
+        }
+        create: {
+          args: Prisma.LookbookCreateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$LookbookPayload>
+        }
+        createMany: {
+          args: Prisma.LookbookCreateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        createManyAndReturn: {
+          args: Prisma.LookbookCreateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$LookbookPayload>[]
+        }
+        delete: {
+          args: Prisma.LookbookDeleteArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$LookbookPayload>
+        }
+        update: {
+          args: Prisma.LookbookUpdateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$LookbookPayload>
+        }
+        deleteMany: {
+          args: Prisma.LookbookDeleteManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateMany: {
+          args: Prisma.LookbookUpdateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateManyAndReturn: {
+          args: Prisma.LookbookUpdateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$LookbookPayload>[]
+        }
+        upsert: {
+          args: Prisma.LookbookUpsertArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$LookbookPayload>
+        }
+        aggregate: {
+          args: Prisma.LookbookAggregateArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AggregateLookbook>
+        }
+        groupBy: {
+          args: Prisma.LookbookGroupByArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.LookbookGroupByOutputType>[]
+        }
+        count: {
+          args: Prisma.LookbookCountArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.LookbookCountAggregateOutputType> | number
+        }
+      }
+    }
+    LookbookHotspot: {
+      payload: Prisma.$LookbookHotspotPayload<ExtArgs>
+      fields: Prisma.LookbookHotspotFieldRefs
+      operations: {
+        findUnique: {
+          args: Prisma.LookbookHotspotFindUniqueArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$LookbookHotspotPayload> | null
+        }
+        findUniqueOrThrow: {
+          args: Prisma.LookbookHotspotFindUniqueOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$LookbookHotspotPayload>
+        }
+        findFirst: {
+          args: Prisma.LookbookHotspotFindFirstArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$LookbookHotspotPayload> | null
+        }
+        findFirstOrThrow: {
+          args: Prisma.LookbookHotspotFindFirstOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$LookbookHotspotPayload>
+        }
+        findMany: {
+          args: Prisma.LookbookHotspotFindManyArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$LookbookHotspotPayload>[]
+        }
+        create: {
+          args: Prisma.LookbookHotspotCreateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$LookbookHotspotPayload>
+        }
+        createMany: {
+          args: Prisma.LookbookHotspotCreateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        createManyAndReturn: {
+          args: Prisma.LookbookHotspotCreateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$LookbookHotspotPayload>[]
+        }
+        delete: {
+          args: Prisma.LookbookHotspotDeleteArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$LookbookHotspotPayload>
+        }
+        update: {
+          args: Prisma.LookbookHotspotUpdateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$LookbookHotspotPayload>
+        }
+        deleteMany: {
+          args: Prisma.LookbookHotspotDeleteManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateMany: {
+          args: Prisma.LookbookHotspotUpdateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateManyAndReturn: {
+          args: Prisma.LookbookHotspotUpdateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$LookbookHotspotPayload>[]
+        }
+        upsert: {
+          args: Prisma.LookbookHotspotUpsertArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$LookbookHotspotPayload>
+        }
+        aggregate: {
+          args: Prisma.LookbookHotspotAggregateArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AggregateLookbookHotspot>
+        }
+        groupBy: {
+          args: Prisma.LookbookHotspotGroupByArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.LookbookHotspotGroupByOutputType>[]
+        }
+        count: {
+          args: Prisma.LookbookHotspotCountArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.LookbookHotspotCountAggregateOutputType> | number
+        }
+      }
+    }
   }
 } & {
   other: {
@@ -1267,6 +1567,54 @@ export const PartnerSubmissionScalarFieldEnum = {
 } as const
 
 export type PartnerSubmissionScalarFieldEnum = (typeof PartnerSubmissionScalarFieldEnum)[keyof typeof PartnerSubmissionScalarFieldEnum]
+
+
+export const GiftPackageScalarFieldEnum = {
+  id: 'id',
+  name: 'name',
+  slug: 'slug',
+  description: 'description',
+  price: 'price',
+  images: 'images',
+  isActive: 'isActive',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type GiftPackageScalarFieldEnum = (typeof GiftPackageScalarFieldEnum)[keyof typeof GiftPackageScalarFieldEnum]
+
+
+export const GiftItemScalarFieldEnum = {
+  id: 'id',
+  packageId: 'packageId',
+  productId: 'productId',
+  quantity: 'quantity'
+} as const
+
+export type GiftItemScalarFieldEnum = (typeof GiftItemScalarFieldEnum)[keyof typeof GiftItemScalarFieldEnum]
+
+
+export const LookbookScalarFieldEnum = {
+  id: 'id',
+  title: 'title',
+  imageUrl: 'imageUrl',
+  isActive: 'isActive',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type LookbookScalarFieldEnum = (typeof LookbookScalarFieldEnum)[keyof typeof LookbookScalarFieldEnum]
+
+
+export const LookbookHotspotScalarFieldEnum = {
+  id: 'id',
+  lookbookId: 'lookbookId',
+  productId: 'productId',
+  x: 'x',
+  y: 'y'
+} as const
+
+export type LookbookHotspotScalarFieldEnum = (typeof LookbookHotspotScalarFieldEnum)[keyof typeof LookbookHotspotScalarFieldEnum]
 
 
 export const SortOrder = {
@@ -1605,6 +1953,10 @@ export type GlobalOmitConfig = {
   orderItem?: Prisma.OrderItemOmit
   receipt?: Prisma.ReceiptOmit
   partnerSubmission?: Prisma.PartnerSubmissionOmit
+  giftPackage?: Prisma.GiftPackageOmit
+  giftItem?: Prisma.GiftItemOmit
+  lookbook?: Prisma.LookbookOmit
+  lookbookHotspot?: Prisma.LookbookHotspotOmit
 }
 
 /* Types for Logging */

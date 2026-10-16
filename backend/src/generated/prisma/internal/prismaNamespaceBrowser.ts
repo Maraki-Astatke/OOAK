@@ -59,7 +59,11 @@ export const ModelName = {
   Order: 'Order',
   OrderItem: 'OrderItem',
   Receipt: 'Receipt',
-  PartnerSubmission: 'PartnerSubmission'
+  PartnerSubmission: 'PartnerSubmission',
+  GiftPackage: 'GiftPackage',
+  GiftItem: 'GiftItem',
+  Lookbook: 'Lookbook',
+  LookbookHotspot: 'LookbookHotspot'
 } as const
 
 export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -215,6 +219,54 @@ export const PartnerSubmissionScalarFieldEnum = {
 } as const
 
 export type PartnerSubmissionScalarFieldEnum = (typeof PartnerSubmissionScalarFieldEnum)[keyof typeof PartnerSubmissionScalarFieldEnum]
+
+
+export const GiftPackageScalarFieldEnum = {
+  id: 'id',
+  name: 'name',
+  slug: 'slug',
+  description: 'description',
+  price: 'price',
+  images: 'images',
+  isActive: 'isActive',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type GiftPackageScalarFieldEnum = (typeof GiftPackageScalarFieldEnum)[keyof typeof GiftPackageScalarFieldEnum]
+
+
+export const GiftItemScalarFieldEnum = {
+  id: 'id',
+  packageId: 'packageId',
+  productId: 'productId',
+  quantity: 'quantity'
+} as const
+
+export type GiftItemScalarFieldEnum = (typeof GiftItemScalarFieldEnum)[keyof typeof GiftItemScalarFieldEnum]
+
+
+export const LookbookScalarFieldEnum = {
+  id: 'id',
+  title: 'title',
+  imageUrl: 'imageUrl',
+  isActive: 'isActive',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type LookbookScalarFieldEnum = (typeof LookbookScalarFieldEnum)[keyof typeof LookbookScalarFieldEnum]
+
+
+export const LookbookHotspotScalarFieldEnum = {
+  id: 'id',
+  lookbookId: 'lookbookId',
+  productId: 'productId',
+  x: 'x',
+  y: 'y'
+} as const
+
+export type LookbookHotspotScalarFieldEnum = (typeof LookbookHotspotScalarFieldEnum)[keyof typeof LookbookHotspotScalarFieldEnum]
 
 
 export const SortOrder = {

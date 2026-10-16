@@ -56,6 +56,7 @@ model Product {
   cartItems CartItem[]
   orderItems OrderItem[]
   giftItems GiftItem[]
+  lookbookHotspots LookbookHotspot[]
   isPreOrder       Boolean   @default(false)
   preOrderShipDate DateTime?
  
@@ -214,4 +215,25 @@ model GiftItem {
   quantity  Int         @default(1)
 
   @@index([packageId])
+}
+model Lookbook {
+  id        String            @id @default(cuid())
+  title     String
+  imageUrl  String
+  isActive  Boolean           @default(true)
+  hotspots  LookbookHotspot[]
+  createdAt DateTime          @default(now())
+  updatedAt DateTime          @updatedAt
+}
+
+model LookbookHotspot {
+  id        String   @id @default(cuid())
+  lookbookId String
+  lookbook  Lookbook @relation(fields: [lookbookId], references: [id], onDelete: Cascade)
+  productId String
+  product   Product  @relation(fields: [productId], references: [id])
+  x         Float    // % from left (0-100)
+  y         Float    // % from top (0-100)
+
+  @@index([lookbookId])
 }

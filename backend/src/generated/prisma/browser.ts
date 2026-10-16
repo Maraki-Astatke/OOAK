@@ -62,3 +62,23 @@ export type Receipt = Prisma.ReceiptModel
  * 
  */
 export type PartnerSubmission = Prisma.PartnerSubmissionModel
+/**
+ * Model GiftPackage
+ * 
+ */
+export type GiftPackage = Prisma.GiftPackageModel
+/**
+ * Model GiftItem
+ * 
+ */
+export type GiftItem = Prisma.GiftItemModel
+/**
+ * Model Lookbook
+ * 
+ */
+export type Lookbook = Prisma.LookbookModel
+/**
+ * Model LookbookHotspot
+ * 
+ */
+export type LookbookHotspot = Prisma.LookbookHotspotModel
