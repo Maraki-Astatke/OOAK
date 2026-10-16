@@ -14,6 +14,7 @@ import receiptRoutes from './routes/receipt.routes.js';
 import path from 'path';
 import { fileURLToPath } from 'url';
 import partnerRoutes from './routes/partner.routes.js';
+import giftRoutes from './routes/gift.routes.js';
 
 const app = express();
 
@@ -100,6 +101,7 @@ app.use('/api/cart', cartRoutes);
 app.use('/api/orders', orderRoutes);
 app.use('/api/receipts', receiptRoutes);
 app.use('/api/partners', partnerRoutes);
+app.use('/api/gifts', giftRoutes);
 
 app.get('/api', (_req: Request, res: Response) => {
   res.json({ message: 'Bag Store API v1' });
