@@ -28,6 +28,7 @@ model User {
   orders Order[]
   receipts Receipt[]
   partnerSubmissions PartnerSubmission[]
+  notifications Notification[]
 
   @@index([email])
 }
@@ -236,4 +237,24 @@ model LookbookHotspot {
   y         Float    // % from top (0-100)
 
   @@index([lookbookId])
+}
+enum NotificationChannel {
+  IN_APP
+  TELEGRAM
+  EMAIL
+}
+
+model Notification {
+  id        String              @id @default(cuid())
+  userId    String
+  user      User                @relation(fields: [userId], references: [id], onDelete: Cascade)
+  title     String
+  message   String
+  channel   NotificationChannel @default(IN_APP)
+  isRead    Boolean             @default(false)
+  metadata  Json?
+  createdAt DateTime            @default(now())
+
+  @@index([userId])
+  @@index([isRead])
 }
