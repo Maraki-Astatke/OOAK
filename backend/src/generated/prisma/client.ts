@@ -106,3 +106,8 @@ export type Lookbook = Prisma.LookbookModel
  * 
  */
 export type LookbookHotspot = Prisma.LookbookHotspotModel
+/**
+ * Model Notification
+ * 
+ */
+export type Notification = Prisma.NotificationModel

@@ -226,6 +226,7 @@ export type UserWhereInput = {
   orders?: Prisma.OrderListRelationFilter
   receipts?: Prisma.ReceiptListRelationFilter
   partnerSubmissions?: Prisma.PartnerSubmissionListRelationFilter
+  notifications?: Prisma.NotificationListRelationFilter
 }
 
 export type UserOrderByWithRelationInput = {
@@ -243,6 +244,7 @@ export type UserOrderByWithRelationInput = {
   orders?: Prisma.OrderOrderByRelationAggregateInput
   receipts?: Prisma.ReceiptOrderByRelationAggregateInput
   partnerSubmissions?: Prisma.PartnerSubmissionOrderByRelationAggregateInput
+  notifications?: Prisma.NotificationOrderByRelationAggregateInput
 }
 
 export type UserWhereUniqueInput = Prisma.AtLeast<{
@@ -263,6 +265,7 @@ export type UserWhereUniqueInput = Prisma.AtLeast<{
   orders?: Prisma.OrderListRelationFilter
   receipts?: Prisma.ReceiptListRelationFilter
   partnerSubmissions?: Prisma.PartnerSubmissionListRelationFilter
+  notifications?: Prisma.NotificationListRelationFilter
 }, "id" | "email" | "googleId">
 
 export type UserOrderByWithAggregationInput = {
@@ -312,6 +315,7 @@ export type UserCreateInput = {
   orders?: Prisma.OrderCreateNestedManyWithoutUserInput
   receipts?: Prisma.ReceiptCreateNestedManyWithoutUserInput
   partnerSubmissions?: Prisma.PartnerSubmissionCreateNestedManyWithoutPartnerInput
+  notifications?: Prisma.NotificationCreateNestedManyWithoutUserInput
 }
 
 export type UserUncheckedCreateInput = {
@@ -329,6 +333,7 @@ export type UserUncheckedCreateInput = {
   orders?: Prisma.OrderUncheckedCreateNestedManyWithoutUserInput
   receipts?: Prisma.ReceiptUncheckedCreateNestedManyWithoutUserInput
   partnerSubmissions?: Prisma.PartnerSubmissionUncheckedCreateNestedManyWithoutPartnerInput
+  notifications?: Prisma.NotificationUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type UserUpdateInput = {
@@ -346,6 +351,7 @@ export type UserUpdateInput = {
   orders?: Prisma.OrderUpdateManyWithoutUserNestedInput
   receipts?: Prisma.ReceiptUpdateManyWithoutUserNestedInput
   partnerSubmissions?: Prisma.PartnerSubmissionUpdateManyWithoutPartnerNestedInput
+  notifications?: Prisma.NotificationUpdateManyWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateInput = {
@@ -363,6 +369,7 @@ export type UserUncheckedUpdateInput = {
   orders?: Prisma.OrderUncheckedUpdateManyWithoutUserNestedInput
   receipts?: Prisma.ReceiptUncheckedUpdateManyWithoutUserNestedInput
   partnerSubmissions?: Prisma.PartnerSubmissionUncheckedUpdateManyWithoutPartnerNestedInput
+  notifications?: Prisma.NotificationUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type UserCreateManyInput = {
@@ -524,6 +531,20 @@ export type UserUpdateOneRequiredWithoutPartnerSubmissionsNestedInput = {
   update?: Prisma.XOR<Prisma.XOR<Prisma.UserUpdateToOneWithWhereWithoutPartnerSubmissionsInput, Prisma.UserUpdateWithoutPartnerSubmissionsInput>, Prisma.UserUncheckedUpdateWithoutPartnerSubmissionsInput>
 }
 
+export type UserCreateNestedOneWithoutNotificationsInput = {
+  create?: Prisma.XOR<Prisma.UserCreateWithoutNotificationsInput, Prisma.UserUncheckedCreateWithoutNotificationsInput>
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutNotificationsInput
+  connect?: Prisma.UserWhereUniqueInput
+}
+
+export type UserUpdateOneRequiredWithoutNotificationsNestedInput = {
+  create?: Prisma.XOR<Prisma.UserCreateWithoutNotificationsInput, Prisma.UserUncheckedCreateWithoutNotificationsInput>
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutNotificationsInput
+  upsert?: Prisma.UserUpsertWithoutNotificationsInput
+  connect?: Prisma.UserWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.UserUpdateToOneWithWhereWithoutNotificationsInput, Prisma.UserUpdateWithoutNotificationsInput>, Prisma.UserUncheckedUpdateWithoutNotificationsInput>
+}
+
 export type UserCreateWithoutCartInput = {
   id?: string
   email: string
@@ -538,6 +559,7 @@ export type UserCreateWithoutCartInput = {
   orders?: Prisma.OrderCreateNestedManyWithoutUserInput
   receipts?: Prisma.ReceiptCreateNestedManyWithoutUserInput
   partnerSubmissions?: Prisma.PartnerSubmissionCreateNestedManyWithoutPartnerInput
+  notifications?: Prisma.NotificationCreateNestedManyWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutCartInput = {
@@ -554,6 +576,7 @@ export type UserUncheckedCreateWithoutCartInput = {
   orders?: Prisma.OrderUncheckedCreateNestedManyWithoutUserInput
   receipts?: Prisma.ReceiptUncheckedCreateNestedManyWithoutUserInput
   partnerSubmissions?: Prisma.PartnerSubmissionUncheckedCreateNestedManyWithoutPartnerInput
+  notifications?: Prisma.NotificationUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutCartInput = {
@@ -586,6 +609,7 @@ export type UserUpdateWithoutCartInput = {
   orders?: Prisma.OrderUpdateManyWithoutUserNestedInput
   receipts?: Prisma.ReceiptUpdateManyWithoutUserNestedInput
   partnerSubmissions?: Prisma.PartnerSubmissionUpdateManyWithoutPartnerNestedInput
+  notifications?: Prisma.NotificationUpdateManyWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutCartInput = {
@@ -602,6 +626,7 @@ export type UserUncheckedUpdateWithoutCartInput = {
   orders?: Prisma.OrderUncheckedUpdateManyWithoutUserNestedInput
   receipts?: Prisma.ReceiptUncheckedUpdateManyWithoutUserNestedInput
   partnerSubmissions?: Prisma.PartnerSubmissionUncheckedUpdateManyWithoutPartnerNestedInput
+  notifications?: Prisma.NotificationUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type UserCreateWithoutOrdersInput = {
@@ -618,6 +643,7 @@ export type UserCreateWithoutOrdersInput = {
   cart?: Prisma.CartCreateNestedOneWithoutUserInput
   receipts?: Prisma.ReceiptCreateNestedManyWithoutUserInput
   partnerSubmissions?: Prisma.PartnerSubmissionCreateNestedManyWithoutPartnerInput
+  notifications?: Prisma.NotificationCreateNestedManyWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutOrdersInput = {
@@ -634,6 +660,7 @@ export type UserUncheckedCreateWithoutOrdersInput = {
   cart?: Prisma.CartUncheckedCreateNestedOneWithoutUserInput
   receipts?: Prisma.ReceiptUncheckedCreateNestedManyWithoutUserInput
   partnerSubmissions?: Prisma.PartnerSubmissionUncheckedCreateNestedManyWithoutPartnerInput
+  notifications?: Prisma.NotificationUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutOrdersInput = {
@@ -666,6 +693,7 @@ export type UserUpdateWithoutOrdersInput = {
   cart?: Prisma.CartUpdateOneWithoutUserNestedInput
   receipts?: Prisma.ReceiptUpdateManyWithoutUserNestedInput
   partnerSubmissions?: Prisma.PartnerSubmissionUpdateManyWithoutPartnerNestedInput
+  notifications?: Prisma.NotificationUpdateManyWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutOrdersInput = {
@@ -682,6 +710,7 @@ export type UserUncheckedUpdateWithoutOrdersInput = {
   cart?: Prisma.CartUncheckedUpdateOneWithoutUserNestedInput
   receipts?: Prisma.ReceiptUncheckedUpdateManyWithoutUserNestedInput
   partnerSubmissions?: Prisma.PartnerSubmissionUncheckedUpdateManyWithoutPartnerNestedInput
+  notifications?: Prisma.NotificationUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type UserCreateWithoutReceiptsInput = {
@@ -698,6 +727,7 @@ export type UserCreateWithoutReceiptsInput = {
   cart?: Prisma.CartCreateNestedOneWithoutUserInput
   orders?: Prisma.OrderCreateNestedManyWithoutUserInput
   partnerSubmissions?: Prisma.PartnerSubmissionCreateNestedManyWithoutPartnerInput
+  notifications?: Prisma.NotificationCreateNestedManyWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutReceiptsInput = {
@@ -714,6 +744,7 @@ export type UserUncheckedCreateWithoutReceiptsInput = {
   cart?: Prisma.CartUncheckedCreateNestedOneWithoutUserInput
   orders?: Prisma.OrderUncheckedCreateNestedManyWithoutUserInput
   partnerSubmissions?: Prisma.PartnerSubmissionUncheckedCreateNestedManyWithoutPartnerInput
+  notifications?: Prisma.NotificationUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutReceiptsInput = {
@@ -746,6 +777,7 @@ export type UserUpdateWithoutReceiptsInput = {
   cart?: Prisma.CartUpdateOneWithoutUserNestedInput
   orders?: Prisma.OrderUpdateManyWithoutUserNestedInput
   partnerSubmissions?: Prisma.PartnerSubmissionUpdateManyWithoutPartnerNestedInput
+  notifications?: Prisma.NotificationUpdateManyWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutReceiptsInput = {
@@ -762,6 +794,7 @@ export type UserUncheckedUpdateWithoutReceiptsInput = {
   cart?: Prisma.CartUncheckedUpdateOneWithoutUserNestedInput
   orders?: Prisma.OrderUncheckedUpdateManyWithoutUserNestedInput
   partnerSubmissions?: Prisma.PartnerSubmissionUncheckedUpdateManyWithoutPartnerNestedInput
+  notifications?: Prisma.NotificationUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type UserCreateWithoutPartnerSubmissionsInput = {
@@ -778,6 +811,7 @@ export type UserCreateWithoutPartnerSubmissionsInput = {
   cart?: Prisma.CartCreateNestedOneWithoutUserInput
   orders?: Prisma.OrderCreateNestedManyWithoutUserInput
   receipts?: Prisma.ReceiptCreateNestedManyWithoutUserInput
+  notifications?: Prisma.NotificationCreateNestedManyWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutPartnerSubmissionsInput = {
@@ -794,6 +828,7 @@ export type UserUncheckedCreateWithoutPartnerSubmissionsInput = {
   cart?: Prisma.CartUncheckedCreateNestedOneWithoutUserInput
   orders?: Prisma.OrderUncheckedCreateNestedManyWithoutUserInput
   receipts?: Prisma.ReceiptUncheckedCreateNestedManyWithoutUserInput
+  notifications?: Prisma.NotificationUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutPartnerSubmissionsInput = {
@@ -826,6 +861,7 @@ export type UserUpdateWithoutPartnerSubmissionsInput = {
   cart?: Prisma.CartUpdateOneWithoutUserNestedInput
   orders?: Prisma.OrderUpdateManyWithoutUserNestedInput
   receipts?: Prisma.ReceiptUpdateManyWithoutUserNestedInput
+  notifications?: Prisma.NotificationUpdateManyWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutPartnerSubmissionsInput = {
@@ -842,6 +878,91 @@ export type UserUncheckedUpdateWithoutPartnerSubmissionsInput = {
   cart?: Prisma.CartUncheckedUpdateOneWithoutUserNestedInput
   orders?: Prisma.OrderUncheckedUpdateManyWithoutUserNestedInput
   receipts?: Prisma.ReceiptUncheckedUpdateManyWithoutUserNestedInput
+  notifications?: Prisma.NotificationUncheckedUpdateManyWithoutUserNestedInput
+}
+
+export type UserCreateWithoutNotificationsInput = {
+  id?: string
+  email: string
+  password: string
+  name?: string | null
+  role?: $Enums.Role
+  emailVerified?: boolean
+  provider?: string | null
+  googleId?: string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  cart?: Prisma.CartCreateNestedOneWithoutUserInput
+  orders?: Prisma.OrderCreateNestedManyWithoutUserInput
+  receipts?: Prisma.ReceiptCreateNestedManyWithoutUserInput
+  partnerSubmissions?: Prisma.PartnerSubmissionCreateNestedManyWithoutPartnerInput
+}
+
+export type UserUncheckedCreateWithoutNotificationsInput = {
+  id?: string
+  email: string
+  password: string
+  name?: string | null
+  role?: $Enums.Role
+  emailVerified?: boolean
+  provider?: string | null
+  googleId?: string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  cart?: Prisma.CartUncheckedCreateNestedOneWithoutUserInput
+  orders?: Prisma.OrderUncheckedCreateNestedManyWithoutUserInput
+  receipts?: Prisma.ReceiptUncheckedCreateNestedManyWithoutUserInput
+  partnerSubmissions?: Prisma.PartnerSubmissionUncheckedCreateNestedManyWithoutPartnerInput
+}
+
+export type UserCreateOrConnectWithoutNotificationsInput = {
+  where: Prisma.UserWhereUniqueInput
+  create: Prisma.XOR<Prisma.UserCreateWithoutNotificationsInput, Prisma.UserUncheckedCreateWithoutNotificationsInput>
+}
+
+export type UserUpsertWithoutNotificationsInput = {
+  update: Prisma.XOR<Prisma.UserUpdateWithoutNotificationsInput, Prisma.UserUncheckedUpdateWithoutNotificationsInput>
+  create: Prisma.XOR<Prisma.UserCreateWithoutNotificationsInput, Prisma.UserUncheckedCreateWithoutNotificationsInput>
+  where?: Prisma.UserWhereInput
+}
+
+export type UserUpdateToOneWithWhereWithoutNotificationsInput = {
+  where?: Prisma.UserWhereInput
+  data: Prisma.XOR<Prisma.UserUpdateWithoutNotificationsInput, Prisma.UserUncheckedUpdateWithoutNotificationsInput>
+}
+
+export type UserUpdateWithoutNotificationsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  password?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  role?: Prisma.EnumRoleFieldUpdateOperationsInput | $Enums.Role
+  emailVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  provider?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  googleId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  cart?: Prisma.CartUpdateOneWithoutUserNestedInput
+  orders?: Prisma.OrderUpdateManyWithoutUserNestedInput
+  receipts?: Prisma.ReceiptUpdateManyWithoutUserNestedInput
+  partnerSubmissions?: Prisma.PartnerSubmissionUpdateManyWithoutPartnerNestedInput
+}
+
+export type UserUncheckedUpdateWithoutNotificationsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  password?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  role?: Prisma.EnumRoleFieldUpdateOperationsInput | $Enums.Role
+  emailVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  provider?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  googleId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  cart?: Prisma.CartUncheckedUpdateOneWithoutUserNestedInput
+  orders?: Prisma.OrderUncheckedUpdateManyWithoutUserNestedInput
+  receipts?: Prisma.ReceiptUncheckedUpdateManyWithoutUserNestedInput
+  partnerSubmissions?: Prisma.PartnerSubmissionUncheckedUpdateManyWithoutPartnerNestedInput
 }
 
 
@@ -853,12 +974,14 @@ export type UserCountOutputType = {
   orders: number
   receipts: number
   partnerSubmissions: number
+  notifications: number
 }
 
 export type UserCountOutputTypeSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   orders?: boolean | UserCountOutputTypeCountOrdersArgs
   receipts?: boolean | UserCountOutputTypeCountReceiptsArgs
   partnerSubmissions?: boolean | UserCountOutputTypeCountPartnerSubmissionsArgs
+  notifications?: boolean | UserCountOutputTypeCountNotificationsArgs
 }
 
 /**
@@ -892,6 +1015,13 @@ export type UserCountOutputTypeCountPartnerSubmissionsArgs<ExtArgs extends runti
   where?: Prisma.PartnerSubmissionWhereInput
 }
 
+/**
+ * UserCountOutputType without action
+ */
+export type UserCountOutputTypeCountNotificationsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.NotificationWhereInput
+}
+
 
 export type UserSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
@@ -908,6 +1038,7 @@ export type UserSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = r
   orders?: boolean | Prisma.User$ordersArgs<ExtArgs>
   receipts?: boolean | Prisma.User$receiptsArgs<ExtArgs>
   partnerSubmissions?: boolean | Prisma.User$partnerSubmissionsArgs<ExtArgs>
+  notifications?: boolean | Prisma.User$notificationsArgs<ExtArgs>
   _count?: boolean | Prisma.UserCountOutputTypeDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["user"]>
 
@@ -956,6 +1087,7 @@ export type UserInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = 
   orders?: boolean | Prisma.User$ordersArgs<ExtArgs>
   receipts?: boolean | Prisma.User$receiptsArgs<ExtArgs>
   partnerSubmissions?: boolean | Prisma.User$partnerSubmissionsArgs<ExtArgs>
+  notifications?: boolean | Prisma.User$notificationsArgs<ExtArgs>
   _count?: boolean | Prisma.UserCountOutputTypeDefaultArgs<ExtArgs>
 }
 export type UserIncludeCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {}
@@ -968,6 +1100,7 @@ export type $UserPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs =
     orders: Prisma.$OrderPayload<ExtArgs>[]
     receipts: Prisma.$ReceiptPayload<ExtArgs>[]
     partnerSubmissions: Prisma.$PartnerSubmissionPayload<ExtArgs>[]
+    notifications: Prisma.$NotificationPayload<ExtArgs>[]
   }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     id: string
@@ -1378,6 +1511,7 @@ export interface Prisma__UserClient<T, Null = never, ExtArgs extends runtime.Typ
   orders<T extends Prisma.User$ordersArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$ordersArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$OrderPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   receipts<T extends Prisma.User$receiptsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$receiptsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$ReceiptPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   partnerSubmissions<T extends Prisma.User$partnerSubmissionsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$partnerSubmissionsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$PartnerSubmissionPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  notifications<T extends Prisma.User$notificationsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$notificationsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$NotificationPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   /**
    * Attaches callbacks for the resolution and/or rejection of the Promise.
    * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -1898,6 +2032,30 @@ export type User$partnerSubmissionsArgs<ExtArgs extends runtime.Types.Extensions
   take?: number
   skip?: number
   distinct?: Prisma.PartnerSubmissionScalarFieldEnum | Prisma.PartnerSubmissionScalarFieldEnum[]
+}
+
+/**
+ * User.notifications
+ */
+export type User$notificationsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the Notification
+   */
+  select?: Prisma.NotificationSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the Notification
+   */
+  omit?: Prisma.NotificationOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.NotificationInclude<ExtArgs> | null
+  where?: Prisma.NotificationWhereInput
+  orderBy?: Prisma.NotificationOrderByWithRelationInput | Prisma.NotificationOrderByWithRelationInput[]
+  cursor?: Prisma.NotificationWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.NotificationScalarFieldEnum | Prisma.NotificationScalarFieldEnum[]
 }
 
 /**

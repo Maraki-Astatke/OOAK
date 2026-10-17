@@ -55,3 +55,12 @@ export const SubmissionStatus = {
 } as const
 
 export type SubmissionStatus = (typeof SubmissionStatus)[keyof typeof SubmissionStatus]
+
+
+export const NotificationChannel = {
+  IN_APP: 'IN_APP',
+  TELEGRAM: 'TELEGRAM',
+  EMAIL: 'EMAIL'
+} as const
+
+export type NotificationChannel = (typeof NotificationChannel)[keyof typeof NotificationChannel]
