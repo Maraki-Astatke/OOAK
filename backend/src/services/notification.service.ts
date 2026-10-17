@@ -1,5 +1,6 @@
 import prisma from '../config/prisma.js';
 import logger from '../config/logger.js';
+import { sendTelegramMessage } from './telegram.service.js';
 
 // ============================================
 // CREATE NOTIFICATION (in-app)
@@ -22,9 +23,10 @@ export const createNotification = async (data: {
     },
   });
 
-  logger.info(
-    { notificationId: notification.id, userId: data.userId },
-    'Notification created'
+  // Always try Telegram (if user has linked)
+  await sendTelegramMessage(
+    data.userId,
+    `🔔 ${data.title}\n\n${data.message}`
   );
 
   return notification;

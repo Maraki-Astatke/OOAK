@@ -6,6 +6,7 @@ import {
   markAllAsRead,
 } from '../services/notification.service.js';
 import logger from '../config/logger.js';
+import { env } from '../config/env.js';
 
 export const getNotifications = async (req: Request, res: Response) => {
   try {
@@ -30,6 +31,19 @@ export const getUnread = async (req: Request, res: Response) => {
   } catch (error) {
     logger.error({ err: error }, 'Get unread count failed');
     return res.status(500).json({ error: 'Failed to fetch count' });
+  }
+};
+export const getTelegramLink = async (req: Request, res: Response) => {
+  try {
+    const userId = (req as any).userId;
+    if (!env.TELEGRAM_BOT_USERNAME) {
+      return res.status(503).json({ error: 'Telegram not configured' });
+    }
+    const link = `https://t.me/${env.TELEGRAM_BOT_USERNAME}?start=${userId}`;
+    return res.json({ link });
+  } catch (error) {
+    logger.error({ err: error }, 'Get telegram link failed');
+    return res.status(500).json({ error: 'Failed' });
   }
 };
 

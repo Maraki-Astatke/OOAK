@@ -29,6 +29,7 @@ model User {
   receipts Receipt[]
   partnerSubmissions PartnerSubmission[]
   notifications Notification[]
+  telegramChatId String? @unique
 
   @@index([email])
 }

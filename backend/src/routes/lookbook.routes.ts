@@ -20,3 +20,5 @@ router.put('/:id', requireAuth, requireRole('ADMIN'), update);
 router.delete('/:id', requireAuth, requireRole('ADMIN'), remove);
 
 export default router;
+
+

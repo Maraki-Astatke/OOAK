@@ -17,6 +17,7 @@ import partnerRoutes from './routes/partner.routes.js';
 import giftRoutes from './routes/gift.routes.js';
 import lookbookRoutes from './routes/lookbook.routes.js';
 import notificationRoutes from './routes/notification.routes.js';
+import { initTelegramBot } from './services/telegram.service.js';
 
 const app = express();
 
@@ -107,6 +108,7 @@ app.use('/api/gifts', giftRoutes);
 app.use('/api/lookbooks', lookbookRoutes);
 app.use('/api/notifications', notificationRoutes);
 
+
 app.get('/api', (_req: Request, res: Response) => {
   res.json({ message: 'Bag Store API v1' });
 });
@@ -142,6 +144,7 @@ const server = app.listen(PORT, () => {
   logger.info(`🌍 Environment: ${env.NODE_ENV}`);
 });
 
+initTelegramBot();
 // Graceful shutdown
 process.on('SIGTERM', async () => {
   logger.info('SIGTERM received, shutting down...');

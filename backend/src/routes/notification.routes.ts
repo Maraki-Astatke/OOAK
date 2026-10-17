@@ -6,6 +6,7 @@ import {
   readAll,
 } from '../controllers/notification.controller.js';
 import { requireAuth } from '../middleware/auth.middleware.js';
+import { getTelegramLink } from '../controllers/notification.controller.js';
 
 const router = Router();
 
@@ -13,7 +14,9 @@ router.use(requireAuth);
 
 router.get('/', getNotifications);
 router.get('/unread-count', getUnread);
+router.get('/telegram-link', getTelegramLink);
 router.put('/:id/read', readNotification);
 router.put('/read-all', readAll);
+
 
 export default router;

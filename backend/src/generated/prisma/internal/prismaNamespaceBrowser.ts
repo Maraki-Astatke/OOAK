@@ -93,7 +93,8 @@ export const UserScalarFieldEnum = {
   provider: 'provider',
   googleId: 'googleId',
   createdAt: 'createdAt',
-  updatedAt: 'updatedAt'
+  updatedAt: 'updatedAt',
+  telegramChatId: 'telegramChatId'
 } as const
 
 export type UserScalarFieldEnum = (typeof UserScalarFieldEnum)[keyof typeof UserScalarFieldEnum]

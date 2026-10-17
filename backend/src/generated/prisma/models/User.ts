@@ -35,6 +35,7 @@ export type UserMinAggregateOutputType = {
   googleId: string | null
   createdAt: Date | null
   updatedAt: Date | null
+  telegramChatId: string | null
 }
 
 export type UserMaxAggregateOutputType = {
@@ -48,6 +49,7 @@ export type UserMaxAggregateOutputType = {
   googleId: string | null
   createdAt: Date | null
   updatedAt: Date | null
+  telegramChatId: string | null
 }
 
 export type UserCountAggregateOutputType = {
@@ -61,6 +63,7 @@ export type UserCountAggregateOutputType = {
   googleId: number
   createdAt: number
   updatedAt: number
+  telegramChatId: number
   _all: number
 }
 
@@ -76,6 +79,7 @@ export type UserMinAggregateInputType = {
   googleId?: true
   createdAt?: true
   updatedAt?: true
+  telegramChatId?: true
 }
 
 export type UserMaxAggregateInputType = {
@@ -89,6 +93,7 @@ export type UserMaxAggregateInputType = {
   googleId?: true
   createdAt?: true
   updatedAt?: true
+  telegramChatId?: true
 }
 
 export type UserCountAggregateInputType = {
@@ -102,6 +107,7 @@ export type UserCountAggregateInputType = {
   googleId?: true
   createdAt?: true
   updatedAt?: true
+  telegramChatId?: true
   _all?: true
 }
 
@@ -188,6 +194,7 @@ export type UserGroupByOutputType = {
   googleId: string | null
   createdAt: Date
   updatedAt: Date
+  telegramChatId: string | null
   _count: UserCountAggregateOutputType | null
   _min: UserMinAggregateOutputType | null
   _max: UserMaxAggregateOutputType | null
@@ -222,6 +229,7 @@ export type UserWhereInput = {
   googleId?: Prisma.StringNullableFilter<"User"> | string | null
   createdAt?: Prisma.DateTimeFilter<"User"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"User"> | Date | string
+  telegramChatId?: Prisma.StringNullableFilter<"User"> | string | null
   cart?: Prisma.XOR<Prisma.CartNullableScalarRelationFilter, Prisma.CartWhereInput> | null
   orders?: Prisma.OrderListRelationFilter
   receipts?: Prisma.ReceiptListRelationFilter
@@ -240,6 +248,7 @@ export type UserOrderByWithRelationInput = {
   googleId?: Prisma.SortOrderInput | Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
+  telegramChatId?: Prisma.SortOrderInput | Prisma.SortOrder
   cart?: Prisma.CartOrderByWithRelationInput
   orders?: Prisma.OrderOrderByRelationAggregateInput
   receipts?: Prisma.ReceiptOrderByRelationAggregateInput
@@ -251,6 +260,7 @@ export type UserWhereUniqueInput = Prisma.AtLeast<{
   id?: string
   email?: string
   googleId?: string
+  telegramChatId?: string
   AND?: Prisma.UserWhereInput | Prisma.UserWhereInput[]
   OR?: Prisma.UserWhereInput[]
   NOT?: Prisma.UserWhereInput | Prisma.UserWhereInput[]
@@ -266,7 +276,7 @@ export type UserWhereUniqueInput = Prisma.AtLeast<{
   receipts?: Prisma.ReceiptListRelationFilter
   partnerSubmissions?: Prisma.PartnerSubmissionListRelationFilter
   notifications?: Prisma.NotificationListRelationFilter
-}, "id" | "email" | "googleId">
+}, "id" | "email" | "googleId" | "telegramChatId">
 
 export type UserOrderByWithAggregationInput = {
   id?: Prisma.SortOrder
@@ -279,6 +289,7 @@ export type UserOrderByWithAggregationInput = {
   googleId?: Prisma.SortOrderInput | Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
+  telegramChatId?: Prisma.SortOrderInput | Prisma.SortOrder
   _count?: Prisma.UserCountOrderByAggregateInput
   _max?: Prisma.UserMaxOrderByAggregateInput
   _min?: Prisma.UserMinOrderByAggregateInput
@@ -298,6 +309,7 @@ export type UserScalarWhereWithAggregatesInput = {
   googleId?: Prisma.StringNullableWithAggregatesFilter<"User"> | string | null
   createdAt?: Prisma.DateTimeWithAggregatesFilter<"User"> | Date | string
   updatedAt?: Prisma.DateTimeWithAggregatesFilter<"User"> | Date | string
+  telegramChatId?: Prisma.StringNullableWithAggregatesFilter<"User"> | string | null
 }
 
 export type UserCreateInput = {
@@ -311,6 +323,7 @@ export type UserCreateInput = {
   googleId?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
+  telegramChatId?: string | null
   cart?: Prisma.CartCreateNestedOneWithoutUserInput
   orders?: Prisma.OrderCreateNestedManyWithoutUserInput
   receipts?: Prisma.ReceiptCreateNestedManyWithoutUserInput
@@ -329,6 +342,7 @@ export type UserUncheckedCreateInput = {
   googleId?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
+  telegramChatId?: string | null
   cart?: Prisma.CartUncheckedCreateNestedOneWithoutUserInput
   orders?: Prisma.OrderUncheckedCreateNestedManyWithoutUserInput
   receipts?: Prisma.ReceiptUncheckedCreateNestedManyWithoutUserInput
@@ -347,6 +361,7 @@ export type UserUpdateInput = {
   googleId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  telegramChatId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   cart?: Prisma.CartUpdateOneWithoutUserNestedInput
   orders?: Prisma.OrderUpdateManyWithoutUserNestedInput
   receipts?: Prisma.ReceiptUpdateManyWithoutUserNestedInput
@@ -365,6 +380,7 @@ export type UserUncheckedUpdateInput = {
   googleId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  telegramChatId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   cart?: Prisma.CartUncheckedUpdateOneWithoutUserNestedInput
   orders?: Prisma.OrderUncheckedUpdateManyWithoutUserNestedInput
   receipts?: Prisma.ReceiptUncheckedUpdateManyWithoutUserNestedInput
@@ -383,6 +399,7 @@ export type UserCreateManyInput = {
   googleId?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
+  telegramChatId?: string | null
 }
 
 export type UserUpdateManyMutationInput = {
@@ -396,6 +413,7 @@ export type UserUpdateManyMutationInput = {
   googleId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  telegramChatId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
 }
 
 export type UserUncheckedUpdateManyInput = {
@@ -409,6 +427,7 @@ export type UserUncheckedUpdateManyInput = {
   googleId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  telegramChatId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
 }
 
 export type UserCountOrderByAggregateInput = {
@@ -422,6 +441,7 @@ export type UserCountOrderByAggregateInput = {
   googleId?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
+  telegramChatId?: Prisma.SortOrder
 }
 
 export type UserMaxOrderByAggregateInput = {
@@ -435,6 +455,7 @@ export type UserMaxOrderByAggregateInput = {
   googleId?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
+  telegramChatId?: Prisma.SortOrder
 }
 
 export type UserMinOrderByAggregateInput = {
@@ -448,6 +469,7 @@ export type UserMinOrderByAggregateInput = {
   googleId?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
+  telegramChatId?: Prisma.SortOrder
 }
 
 export type UserScalarRelationFilter = {
@@ -556,6 +578,7 @@ export type UserCreateWithoutCartInput = {
   googleId?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
+  telegramChatId?: string | null
   orders?: Prisma.OrderCreateNestedManyWithoutUserInput
   receipts?: Prisma.ReceiptCreateNestedManyWithoutUserInput
   partnerSubmissions?: Prisma.PartnerSubmissionCreateNestedManyWithoutPartnerInput
@@ -573,6 +596,7 @@ export type UserUncheckedCreateWithoutCartInput = {
   googleId?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
+  telegramChatId?: string | null
   orders?: Prisma.OrderUncheckedCreateNestedManyWithoutUserInput
   receipts?: Prisma.ReceiptUncheckedCreateNestedManyWithoutUserInput
   partnerSubmissions?: Prisma.PartnerSubmissionUncheckedCreateNestedManyWithoutPartnerInput
@@ -606,6 +630,7 @@ export type UserUpdateWithoutCartInput = {
   googleId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  telegramChatId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   orders?: Prisma.OrderUpdateManyWithoutUserNestedInput
   receipts?: Prisma.ReceiptUpdateManyWithoutUserNestedInput
   partnerSubmissions?: Prisma.PartnerSubmissionUpdateManyWithoutPartnerNestedInput
@@ -623,6 +648,7 @@ export type UserUncheckedUpdateWithoutCartInput = {
   googleId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  telegramChatId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   orders?: Prisma.OrderUncheckedUpdateManyWithoutUserNestedInput
   receipts?: Prisma.ReceiptUncheckedUpdateManyWithoutUserNestedInput
   partnerSubmissions?: Prisma.PartnerSubmissionUncheckedUpdateManyWithoutPartnerNestedInput
@@ -640,6 +666,7 @@ export type UserCreateWithoutOrdersInput = {
   googleId?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
+  telegramChatId?: string | null
   cart?: Prisma.CartCreateNestedOneWithoutUserInput
   receipts?: Prisma.ReceiptCreateNestedManyWithoutUserInput
   partnerSubmissions?: Prisma.PartnerSubmissionCreateNestedManyWithoutPartnerInput
@@ -657,6 +684,7 @@ export type UserUncheckedCreateWithoutOrdersInput = {
   googleId?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
+  telegramChatId?: string | null
   cart?: Prisma.CartUncheckedCreateNestedOneWithoutUserInput
   receipts?: Prisma.ReceiptUncheckedCreateNestedManyWithoutUserInput
   partnerSubmissions?: Prisma.PartnerSubmissionUncheckedCreateNestedManyWithoutPartnerInput
@@ -690,6 +718,7 @@ export type UserUpdateWithoutOrdersInput = {
   googleId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  telegramChatId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   cart?: Prisma.CartUpdateOneWithoutUserNestedInput
   receipts?: Prisma.ReceiptUpdateManyWithoutUserNestedInput
   partnerSubmissions?: Prisma.PartnerSubmissionUpdateManyWithoutPartnerNestedInput
@@ -707,6 +736,7 @@ export type UserUncheckedUpdateWithoutOrdersInput = {
   googleId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  telegramChatId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   cart?: Prisma.CartUncheckedUpdateOneWithoutUserNestedInput
   receipts?: Prisma.ReceiptUncheckedUpdateManyWithoutUserNestedInput
   partnerSubmissions?: Prisma.PartnerSubmissionUncheckedUpdateManyWithoutPartnerNestedInput
@@ -724,6 +754,7 @@ export type UserCreateWithoutReceiptsInput = {
   googleId?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
+  telegramChatId?: string | null
   cart?: Prisma.CartCreateNestedOneWithoutUserInput
   orders?: Prisma.OrderCreateNestedManyWithoutUserInput
   partnerSubmissions?: Prisma.PartnerSubmissionCreateNestedManyWithoutPartnerInput
@@ -741,6 +772,7 @@ export type UserUncheckedCreateWithoutReceiptsInput = {
   googleId?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
+  telegramChatId?: string | null
   cart?: Prisma.CartUncheckedCreateNestedOneWithoutUserInput
   orders?: Prisma.OrderUncheckedCreateNestedManyWithoutUserInput
   partnerSubmissions?: Prisma.PartnerSubmissionUncheckedCreateNestedManyWithoutPartnerInput
@@ -774,6 +806,7 @@ export type UserUpdateWithoutReceiptsInput = {
   googleId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  telegramChatId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   cart?: Prisma.CartUpdateOneWithoutUserNestedInput
   orders?: Prisma.OrderUpdateManyWithoutUserNestedInput
   partnerSubmissions?: Prisma.PartnerSubmissionUpdateManyWithoutPartnerNestedInput
@@ -791,6 +824,7 @@ export type UserUncheckedUpdateWithoutReceiptsInput = {
   googleId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  telegramChatId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   cart?: Prisma.CartUncheckedUpdateOneWithoutUserNestedInput
   orders?: Prisma.OrderUncheckedUpdateManyWithoutUserNestedInput
   partnerSubmissions?: Prisma.PartnerSubmissionUncheckedUpdateManyWithoutPartnerNestedInput
@@ -808,6 +842,7 @@ export type UserCreateWithoutPartnerSubmissionsInput = {
   googleId?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
+  telegramChatId?: string | null
   cart?: Prisma.CartCreateNestedOneWithoutUserInput
   orders?: Prisma.OrderCreateNestedManyWithoutUserInput
   receipts?: Prisma.ReceiptCreateNestedManyWithoutUserInput
@@ -825,6 +860,7 @@ export type UserUncheckedCreateWithoutPartnerSubmissionsInput = {
   googleId?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
+  telegramChatId?: string | null
   cart?: Prisma.CartUncheckedCreateNestedOneWithoutUserInput
   orders?: Prisma.OrderUncheckedCreateNestedManyWithoutUserInput
   receipts?: Prisma.ReceiptUncheckedCreateNestedManyWithoutUserInput
@@ -858,6 +894,7 @@ export type UserUpdateWithoutPartnerSubmissionsInput = {
   googleId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  telegramChatId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   cart?: Prisma.CartUpdateOneWithoutUserNestedInput
   orders?: Prisma.OrderUpdateManyWithoutUserNestedInput
   receipts?: Prisma.ReceiptUpdateManyWithoutUserNestedInput
@@ -875,6 +912,7 @@ export type UserUncheckedUpdateWithoutPartnerSubmissionsInput = {
   googleId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  telegramChatId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   cart?: Prisma.CartUncheckedUpdateOneWithoutUserNestedInput
   orders?: Prisma.OrderUncheckedUpdateManyWithoutUserNestedInput
   receipts?: Prisma.ReceiptUncheckedUpdateManyWithoutUserNestedInput
@@ -892,6 +930,7 @@ export type UserCreateWithoutNotificationsInput = {
   googleId?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
+  telegramChatId?: string | null
   cart?: Prisma.CartCreateNestedOneWithoutUserInput
   orders?: Prisma.OrderCreateNestedManyWithoutUserInput
   receipts?: Prisma.ReceiptCreateNestedManyWithoutUserInput
@@ -909,6 +948,7 @@ export type UserUncheckedCreateWithoutNotificationsInput = {
   googleId?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
+  telegramChatId?: string | null
   cart?: Prisma.CartUncheckedCreateNestedOneWithoutUserInput
   orders?: Prisma.OrderUncheckedCreateNestedManyWithoutUserInput
   receipts?: Prisma.ReceiptUncheckedCreateNestedManyWithoutUserInput
@@ -942,6 +982,7 @@ export type UserUpdateWithoutNotificationsInput = {
   googleId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  telegramChatId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   cart?: Prisma.CartUpdateOneWithoutUserNestedInput
   orders?: Prisma.OrderUpdateManyWithoutUserNestedInput
   receipts?: Prisma.ReceiptUpdateManyWithoutUserNestedInput
@@ -959,6 +1000,7 @@ export type UserUncheckedUpdateWithoutNotificationsInput = {
   googleId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  telegramChatId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   cart?: Prisma.CartUncheckedUpdateOneWithoutUserNestedInput
   orders?: Prisma.OrderUncheckedUpdateManyWithoutUserNestedInput
   receipts?: Prisma.ReceiptUncheckedUpdateManyWithoutUserNestedInput
@@ -1034,6 +1076,7 @@ export type UserSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = r
   googleId?: boolean
   createdAt?: boolean
   updatedAt?: boolean
+  telegramChatId?: boolean
   cart?: boolean | Prisma.User$cartArgs<ExtArgs>
   orders?: boolean | Prisma.User$ordersArgs<ExtArgs>
   receipts?: boolean | Prisma.User$receiptsArgs<ExtArgs>
@@ -1053,6 +1096,7 @@ export type UserSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Extensio
   googleId?: boolean
   createdAt?: boolean
   updatedAt?: boolean
+  telegramChatId?: boolean
 }, ExtArgs["result"]["user"]>
 
 export type UserSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
@@ -1066,6 +1110,7 @@ export type UserSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensio
   googleId?: boolean
   createdAt?: boolean
   updatedAt?: boolean
+  telegramChatId?: boolean
 }, ExtArgs["result"]["user"]>
 
 export type UserSelectScalar = {
@@ -1079,9 +1124,10 @@ export type UserSelectScalar = {
   googleId?: boolean
   createdAt?: boolean
   updatedAt?: boolean
+  telegramChatId?: boolean
 }
 
-export type UserOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "email" | "password" | "name" | "role" | "emailVerified" | "provider" | "googleId" | "createdAt" | "updatedAt", ExtArgs["result"]["user"]>
+export type UserOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "email" | "password" | "name" | "role" | "emailVerified" | "provider" | "googleId" | "createdAt" | "updatedAt" | "telegramChatId", ExtArgs["result"]["user"]>
 export type UserInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   cart?: boolean | Prisma.User$cartArgs<ExtArgs>
   orders?: boolean | Prisma.User$ordersArgs<ExtArgs>
@@ -1113,6 +1159,7 @@ export type $UserPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs =
     googleId: string | null
     createdAt: Date
     updatedAt: Date
+    telegramChatId: string | null
   }, ExtArgs["result"]["user"]>
   composites: {}
 }
@@ -1551,6 +1598,7 @@ export interface UserFieldRefs {
   readonly googleId: Prisma.FieldRef<"User", 'String'>
   readonly createdAt: Prisma.FieldRef<"User", 'DateTime'>
   readonly updatedAt: Prisma.FieldRef<"User", 'DateTime'>
+  readonly telegramChatId: Prisma.FieldRef<"User", 'String'>
 }
     
 
