@@ -18,6 +18,7 @@ import giftRoutes from './routes/gift.routes.js';
 import lookbookRoutes from './routes/lookbook.routes.js';
 import notificationRoutes from './routes/notification.routes.js';
 import { initTelegramBot } from './services/telegram.service.js';
+import { initEmailTransporter } from './services/email.service.js';
 
 const app = express();
 
@@ -145,6 +146,7 @@ const server = app.listen(PORT, () => {
 });
 
 initTelegramBot();
+initEmailTransporter();
 // Graceful shutdown
 process.on('SIGTERM', async () => {
   logger.info('SIGTERM received, shutting down...');

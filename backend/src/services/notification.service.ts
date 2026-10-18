@@ -1,6 +1,8 @@
 import prisma from '../config/prisma.js';
 import logger from '../config/logger.js';
 import { sendTelegramMessage } from './telegram.service.js';
+import { sendEmail } from './email.service.js';
+
 
 // ============================================
 // CREATE NOTIFICATION (in-app)
@@ -13,6 +15,7 @@ export const createNotification = async (data: {
   channel?: 'IN_APP' | 'TELEGRAM' | 'EMAIL';
   metadata?: any;
 }) => {
+  // 1. Save to DB (In-App)
   const notification = await prisma.notification.create({
     data: {
       userId: data.userId,
@@ -23,11 +26,29 @@ export const createNotification = async (data: {
     },
   });
 
-  // Always try Telegram (if user has linked)
+  // 2. Send Telegram (if linked)
   await sendTelegramMessage(
     data.userId,
     `🔔 ${data.title}\n\n${data.message}`
   );
+
+  // 3. Send Email
+  const user = await prisma.user.findUnique({
+    where: { id: data.userId },
+    select: { email: true },
+  });
+
+  if (user?.email) {
+    const html = `
+      <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
+        <h2 style="color: #333;">${data.title}</h2>
+        <p style="color: #555; font-size: 16px;">${data.message}</p>
+        <hr style="border: none; border-top: 1px solid #eee; margin: 20px 0;" />
+        <p style="color: #999; font-size: 12px;">Ooak Store</p>
+      </div>
+    `;
+    await sendEmail(user.email, data.title, html);
+  }
 
   return notification;
 };
