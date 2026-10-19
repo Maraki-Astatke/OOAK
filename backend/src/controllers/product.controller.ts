@@ -15,6 +15,7 @@ import {
   createCategory,
 } from '../services/product.service.js';
 import logger from '../config/logger.js';
+import { cleanString, cleanRichText } from '../utils/sanitize.js';
 
 // ============================================
 // PUBLIC
@@ -86,6 +87,14 @@ export const createProductHandler = async (req: Request, res: Response) => {
         details: parsed.error.flatten().fieldErrors,
       });
     }
+
+    // Sanitize inputs (OWASP A03: Injection)
+    parsed.data.name = cleanString(parsed.data.name);
+    parsed.data.slug = cleanString(parsed.data.slug);
+    if (parsed.data.description) {
+      parsed.data.description = cleanRichText(parsed.data.description);
+    }
+
     const product = await createProduct(parsed.data);
     logger.info({ productId: product.id }, 'Product created');
     return res.status(201).json({ product });
@@ -105,6 +114,18 @@ export const updateProductHandler = async (req: Request, res: Response) => {
         details: parsed.error.flatten().fieldErrors,
       });
     }
+
+    // Sanitize inputs (OWASP A03: Injection)
+    if (parsed.data.name) {
+      parsed.data.name = cleanString(parsed.data.name);
+    }
+    if (parsed.data.slug) {
+      parsed.data.slug = cleanString(parsed.data.slug);
+    }
+    if (parsed.data.description) {
+      parsed.data.description = cleanRichText(parsed.data.description);
+    }
+
     const product = await updateProduct(id, parsed.data);
     logger.info({ productId: id }, 'Product updated');
     return res.json({ product });
