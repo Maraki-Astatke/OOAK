@@ -1,122 +1,66 @@
-import { useState } from 'react'
-import heroImg from './assets/hero.png'
-import reactLogo from './assets/react.svg'
-import viteLogo from './assets/vite.svg'
-import './App.css'
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import Navbar from './components/Navbar';
 
-function App() {
-  const [count, setCount] = useState(0)
-
+function Home() {
   return (
-    <>
-      <section id="center">
-        <div className="hero">
-          <img src={heroImg} className="base" width="170" height="179" alt="" />
-          <img src={reactLogo} className="framework" alt="React logo" />
-          <img src={viteLogo} className="vite" alt="Vite logo" />
-        </div>
-        <div>
-          <h1>Get started</h1>
-          <p>
-            Edit <code>src/App.tsx</code> and save to test <code>HMR</code>
+    <div className="min-h-screen flex flex-col bg-brand-silver">
+      <Navbar />
+      
+      <main className="flex-grow flex flex-col md:flex-row items-center justify-center px-6 md:px-20 py-12 gap-12">
+        
+        {/* Left Side: Text */}
+        <div className="w-full md:w-1/2 text-left">
+          
+          {/* Headline uses Balthazar (font-serif) */}
+          <h1 className="text-6xl md:text-8xl font-serif text-brand-navy mb-6 leading-tight tracking-tight">
+            Define Your <br />
+            <span className="text-brand-gold italic">Elegance.</span>
+          </h1>
+          
+          {/* Paragraph uses Inter (default font-sans) */}
+          <p className="text-lg md:text-xl text-brand-grey-text mb-10 max-w-lg">
+            Discover our exclusive collection of handcrafted bags. 
+            Premium quality, minimalist design, made for your everyday journey.
           </p>
+          
+          <div className="flex flex-col sm:flex-row gap-6">
+            {/* Primary Button: Gold Background, Navy Text */}
+            <button className="bg-brand-gold text-brand-navy px-8 py-4 rounded-sm text-sm font-elegant font-bold tracking-widest uppercase hover:bg-[#b08d4a] transition-all shadow-lg">
+              Shop Collection
+            </button>
+            
+            {/* Secondary Button: Navy Border, Navy Text */}
+            <button className="bg-transparent border border-brand-navy text-brand-navy px-8 py-4 rounded-sm text-sm font-elegant font-bold tracking-widest uppercase hover:bg-brand-navy hover:text-white transition-all shadow-sm">
+              View Lookbook
+            </button>
+          </div>
         </div>
-        <button
-          type="button"
-          className="counter"
-          onClick={() => setCount((count) => count + 1)}
-        >
-          Count is {count}
-        </button>
-      </section>
 
-      <div className="ticks"></div>
-
-      <section id="next-steps">
-        <div id="docs">
-          <svg className="icon" role="presentation" aria-hidden="true">
-            <use href="/icons.svg#documentation-icon"></use>
-          </svg>
-          <h2>Documentation</h2>
-          <p>Your questions, answered</p>
-          <ul>
-            <li>
-              <a href="https://vite.dev/" target="_blank">
-                <img className="logo" src={viteLogo} alt="" />
-                Explore Vite
-              </a>
-            </li>
-            <li>
-              <a href="https://react.dev/" target="_blank">
-                <img className="button-icon" src={reactLogo} alt="" />
-                Learn more
-              </a>
-            </li>
-          </ul>
+        {/* Right Side: Image Placeholder */}
+        <div className="w-full md:w-1/2 h-[500px] bg-white rounded-xl overflow-hidden shadow-2xl relative border border-gray-200">
+           <div className="absolute inset-0 flex items-center justify-center text-brand-grey-text font-medium text-lg opacity-40">
+              [ High-Quality Bag Image Goes Here ]
+           </div>
         </div>
-        <div id="social">
-          <svg className="icon" role="presentation" aria-hidden="true">
-            <use href="/icons.svg#social-icon"></use>
-          </svg>
-          <h2>Connect with us</h2>
-          <p>Join the Vite community</p>
-          <ul>
-            <li>
-              <a href="https://github.com/vitejs/vite" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#github-icon"></use>
-                </svg>
-                GitHub
-              </a>
-            </li>
-            <li>
-              <a href="https://chat.vite.dev/" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#discord-icon"></use>
-                </svg>
-                Discord
-              </a>
-            </li>
-            <li>
-              <a href="https://x.com/vite_js" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#x-icon"></use>
-                </svg>
-                X.com
-              </a>
-            </li>
-            <li>
-              <a href="https://bsky.app/profile/vite.dev" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#bluesky-icon"></use>
-                </svg>
-                Bluesky
-              </a>
-            </li>
-          </ul>
-        </div>
-      </section>
 
-      <div className="ticks"></div>
-      <section id="spacer"></section>
-    </>
-  )
+      </main>
+    </div>
+  );
 }
 
-export default App
+function Login() {
+  return <div className="text-brand-navy font-serif text-center mt-20 text-4xl">Login Page (Coming Soon)</div>;
+}
+
+function App() {
+  return (
+    <Router>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/login" element={<Login />} />
+      </Routes>
+    </Router>
+  );
+}
+
+export default App;

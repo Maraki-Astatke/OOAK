@@ -1,1 +1,22 @@
 @import "tailwindcss";
+
+@theme {
+  /* Background */
+  --color-brand-silver: #F3F3F3;    /* The Silver Background */
+  
+  /* Text & Accents */
+  --color-brand-navy: #1A2238;      /* Deep Midnight Navy/Dark Grey */
+  --color-brand-gold: #C5A059;      /* Rich Royal Gold */
+  --color-brand-grey-text: #666666; /* Muted grey for paragraphs */
+  
+  /* Fonts */
+  --font-serif: "Balthazar", serif;
+  --font-elegant: "Cinzel", serif;
+  --font-sans: "Inter", sans-serif;
+}
+
+body {
+  background-color: var(--color-brand-silver);
+  color: var(--color-brand-navy);
+  font-family: var(--font-sans); 
+}
