@@ -51,7 +51,7 @@ export const readNotification = async (req: Request, res: Response) => {
   try {
     const userId = (req as any).userId;
     const { id } = req.params;
-    await markAsRead(id, userId);
+    await markAsRead(id as string, userId);
     return res.json({ success: true });
   } catch (error) {
     logger.error({ err: error }, 'Mark as read failed');

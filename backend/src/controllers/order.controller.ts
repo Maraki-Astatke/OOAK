@@ -52,7 +52,7 @@ export const getMyOrder = async (req: Request, res: Response) => {
   try {
     const userId = (req as any).userId;
     const { id } = req.params;
-    const order = await getUserOrderById(userId, id);
+    const order = await getUserOrderById(userId, id as string);
     if (!order) {
       return res.status(404).json({ error: 'Order not found' });
     }
@@ -81,7 +81,7 @@ export const adminListOrders = async (req: Request, res: Response) => {
 export const adminGetOrder = async (req: Request, res: Response) => {
   try {
     const { id } = req.params;
-    const order = await getOrderById(id);
+    const order = await getOrderById(id as string);
     if (!order) {
       return res.status(404).json({ error: 'Order not found' });
     }
@@ -102,7 +102,7 @@ export const adminUpdateStatus = async (req: Request, res: Response) => {
         details: parsed.error.flatten().fieldErrors,
       });
     }
-    const order = await updateOrderStatus(id, parsed.data.status);
+    const order = await updateOrderStatus(id as string, parsed.data.status);
     logger.info({ orderId: id, status: parsed.data.status }, 'Order status updated');
     return res.json({ order });
   } catch (error) {
@@ -119,7 +119,7 @@ export const adminMarkBalancePaid = async (req: Request, res: Response) => {
   try {
     const { id } = req.params;
     const { markBalancePaid } = await import('../services/order.service.js');
-    const order = await markBalancePaid(id);
+    const order = await markBalancePaid(id as string);
     logger.info({ orderId: id }, 'Balance marked as paid');
     return res.json({ order });
   } catch (error: any) {

@@ -82,7 +82,7 @@ export const adminReviewReceipt = async (req: Request, res: Response) => {
       return res.status(400).json({ error: 'Invalid status' });
     }
 
-    const receipt = await reviewReceipt(id, status, adminNote);
+    const receipt = await reviewReceipt(id as string, status, adminNote);
     logger.info({ receiptId: id, status }, 'Receipt reviewed');
     return res.json({ receipt });
   } catch (error) {

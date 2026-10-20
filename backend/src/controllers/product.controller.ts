@@ -39,7 +39,7 @@ export const getProducts = async (req: Request, res: Response) => {
 export const getProduct = async (req: Request, res: Response) => {
   try {
     const { id } = req.params;
-    const product = await getProductById(id);
+    const product = await getProductById(id as string);
     if (!product || !product.isActive) {
       return res.status(404).json({ error: 'Product not found' });
     }
@@ -53,7 +53,7 @@ export const getProduct = async (req: Request, res: Response) => {
 export const getProductBySlugHandler = async (req: Request, res: Response) => {
   try {
     const { slug } = req.params;
-    const product = await getProductBySlug(slug);
+    const product = await getProductBySlug(slug as string);
     if (!product || !product.isActive) {
       return res.status(404).json({ error: 'Product not found' });
     }
@@ -126,7 +126,7 @@ export const updateProductHandler = async (req: Request, res: Response) => {
       parsed.data.description = cleanRichText(parsed.data.description);
     }
 
-    const product = await updateProduct(id, parsed.data);
+    const product = await updateProduct(id as string, parsed.data);
     logger.info({ productId: id }, 'Product updated');
     return res.json({ product });
   } catch (error) {
@@ -138,7 +138,7 @@ export const updateProductHandler = async (req: Request, res: Response) => {
 export const deleteProductHandler = async (req: Request, res: Response) => {
   try {
     const { id } = req.params;
-    await deleteProduct(id);
+    await deleteProduct(id as string);
     logger.info({ productId: id }, 'Product deleted');
     return res.json({ success: true });
   } catch (error) {

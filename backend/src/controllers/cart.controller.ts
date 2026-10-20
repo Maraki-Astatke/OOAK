@@ -67,7 +67,7 @@ export const updateItem = async (req: Request, res: Response) => {
       });
     }
 
-    const item = await updateCartItem(userId, itemId, parsed.data.quantity);
+    const item = await updateCartItem(userId, itemId as string, parsed.data.quantity);
     return res.json({ item });
   } catch (error: any) {
     logger.error({ err: error }, 'Update cart item failed');
@@ -83,7 +83,7 @@ export const removeItem = async (req: Request, res: Response) => {
   try {
     const userId = (req as any).userId;
     const { itemId } = req.params;
-    await removeCartItem(userId, itemId);
+    await removeCartItem(userId, itemId as string);
     return res.json({ success: true });
   } catch (error: any) {
     logger.error({ err: error }, 'Remove cart item failed');

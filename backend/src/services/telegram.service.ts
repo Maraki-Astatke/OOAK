@@ -19,7 +19,7 @@ export const initTelegramBot = () => {
 
   // Listen for /start <userId> command
   // The user opens t.me/YourBot?start=<userId> to link their account
-  bot.onText(/^\/start(?:\s+(.+))?$/, async (msg, match) => {
+ bot!.onText(/^\/start(?:\s+(.+))?$/, async (msg, match) => {
     const chatId = msg.chat.id.toString();
     const userId = match?.[1]; // the userId passed after /start
 

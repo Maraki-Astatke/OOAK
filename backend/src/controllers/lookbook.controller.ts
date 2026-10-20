@@ -29,7 +29,7 @@ export const getLookbooks = async (_req: Request, res: Response) => {
 export const getLookbook = async (req: Request, res: Response) => {
   try {
     const { id } = req.params;
-    const lookbook = await getLookbookById(id);
+    const lookbook = await getLookbookById(id as string);
     if (!lookbook || !lookbook.isActive) {
       return res.status(404).json({ error: 'Lookbook not found' });
     }
@@ -72,7 +72,7 @@ export const update = async (req: Request, res: Response) => {
         details: parsed.error.flatten().fieldErrors,
       });
     }
-    const lookbook = await updateLookbook(id, parsed.data);
+    const lookbook = await updateLookbook(id as string, parsed.data);
     return res.json({ lookbook });
   } catch (error: any) {
     logger.error({ err: error }, 'Update lookbook failed');
@@ -83,7 +83,7 @@ export const update = async (req: Request, res: Response) => {
 export const remove = async (req: Request, res: Response) => {
   try {
     const { id } = req.params;
-    await deleteLookbook(id);
+    await deleteLookbook(id as string);
     return res.json({ success: true });
   } catch (error) {
     logger.error({ err: error }, 'Delete lookbook failed');

@@ -73,7 +73,7 @@ export const adminReview = async (req: Request, res: Response) => {
     }
 
     const submission = await reviewSubmission(
-      id,
+      id as string,
       parsed.data.status,
       parsed.data.adminNote
     );

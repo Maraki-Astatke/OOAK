@@ -30,7 +30,7 @@ export const getGifts = async (_req: Request, res: Response) => {
 export const getGift = async (req: Request, res: Response) => {
   try {
     const { id } = req.params;
-    const gift = await getGiftPackageById(id);
+    const gift = await getGiftPackageById(id as string);
     if (!gift || !gift.isActive) {
       return res.status(404).json({ error: 'Gift package not found' });
     }
@@ -44,7 +44,7 @@ export const getGift = async (req: Request, res: Response) => {
 export const getGiftBySlug = async (req: Request, res: Response) => {
   try {
     const { slug } = req.params;
-    const gift = await getGiftPackageBySlug(slug);
+    const gift = await getGiftPackageBySlug(slug as string);
     if (!gift || !gift.isActive) {
       return res.status(404).json({ error: 'Gift package not found' });
     }
@@ -87,7 +87,7 @@ export const updateGift = async (req: Request, res: Response) => {
         details: parsed.error.flatten().fieldErrors,
       });
     }
-    const gift = await updateGiftPackage(id, parsed.data);
+    const gift = await updateGiftPackage(id as string, parsed.data);
     logger.info({ giftId: id }, 'Gift package updated');
     return res.json({ gift });
   } catch (error: any) {
@@ -99,7 +99,7 @@ export const updateGift = async (req: Request, res: Response) => {
 export const deleteGift = async (req: Request, res: Response) => {
   try {
     const { id } = req.params;
-    await deleteGiftPackage(id);
+    await deleteGiftPackage(id as string);
     logger.info({ giftId: id }, 'Gift package deleted');
     return res.json({ success: true });
   } catch (error) {
