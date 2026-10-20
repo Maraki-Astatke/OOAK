@@ -2,12 +2,13 @@
 
 @theme {
   /* Background */
-  --color-brand-silver: #F3F3F3;    /* The Silver Background */
+  --color-brand-silver: #F0EFEA;    /* The soft Cream/Silver from the image */
+  --color-brand-white: #FFFFFF;     /* Pure White for Navbar/Cards */
   
   /* Text & Accents */
-  --color-brand-navy: #1A2238;      /* Deep Midnight Navy/Dark Grey */
-  --color-brand-gold: #C5A059;      /* Rich Royal Gold */
-  --color-brand-grey-text: #666666; /* Muted grey for paragraphs */
+  --color-brand-burgundy: #4A1525;  /* Deep Burgundy Wine */
+  --color-brand-grey: #6B7280;   
+  --color-brand-burgundy-dark: #360f1a;   /* Muted grey for paragraphs */
   
   /* Fonts */
   --font-serif: "Balthazar", serif;
@@ -17,6 +18,6 @@
 
 body {
   background-color: var(--color-brand-silver);
-  color: var(--color-brand-navy);
+  color: var(--color-brand-burgundy);
   font-family: var(--font-sans); 
 }
