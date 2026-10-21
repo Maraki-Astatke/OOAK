@@ -1,14 +1,14 @@
 @import "tailwindcss";
 
 @theme {
-  /* Background */
-  --color-brand-silver: #F0EFEA;    /* The soft Cream/Silver from the image */
-  --color-brand-white: #FFFFFF;     /* Pure White for Navbar/Cards */
+  /* Background - Bright Metallic Silver */
+  --color-brand-silver: #EBEBEB;    /* <-- CHANGED TO THIS */
+  --color-brand-white: #FFFFFF;     
   
   /* Text & Accents */
-  --color-brand-burgundy: #4A1525;  /* Deep Burgundy Wine */
+  --color-brand-burgundy: #4A1525;  
   --color-brand-grey: #6B7280;   
-  --color-brand-burgundy-dark: #360f1a;   /* Muted grey for paragraphs */
+  --color-brand-burgundy-dark: #360f1a;   
   
   /* Fonts */
   --font-serif: "Balthazar", serif;
