@@ -3,16 +3,18 @@ import path from 'path';
 import crypto from 'crypto';
 import fs from 'fs';
 
-const UPLOAD_DIR = 'uploads/receipts';
+// ============================================
+// 1. RECEIPT UPLOAD (PDFs, JPGs)
+// ============================================
 
-// Ensure folder exists
-if (!fs.existsSync(UPLOAD_DIR)) {
-  fs.mkdirSync(UPLOAD_DIR, { recursive: true });
+const RECEIPT_DIR = 'uploads/receipts';
+if (!fs.existsSync(RECEIPT_DIR)) {
+  fs.mkdirSync(RECEIPT_DIR, { recursive: true });
 }
 
-const storage = multer.diskStorage({
+const receiptStorage = multer.diskStorage({
   destination: (_req, _file, cb) => {
-    cb(null, UPLOAD_DIR);
+    cb(null, RECEIPT_DIR);
   },
   filename: (_req, file, cb) => {
     const ext = path.extname(file.originalname);
@@ -21,16 +23,50 @@ const storage = multer.diskStorage({
   },
 });
 
-const ALLOWED = ['image/jpeg', 'image/png', 'application/pdf'];
+const RECEIPT_ALLOWED = ['image/jpeg', 'image/png', 'application/pdf'];
 
 export const receiptUpload = multer({
-  storage,
+  storage: receiptStorage,
   limits: { fileSize: 5 * 1024 * 1024 }, // 5MB
   fileFilter: (_req, file, cb) => {
-    if (ALLOWED.includes(file.mimetype)) {
+    if (RECEIPT_ALLOWED.includes(file.mimetype)) {
       cb(null, true);
     } else {
       cb(new Error('Only JPG, PNG, or PDF allowed'));
+    }
+  },
+});
+
+// ============================================
+// 2. PRODUCT IMAGE UPLOAD (JPGs, PNGs, WEBP)
+// ============================================
+
+const PRODUCT_DIR = 'uploads/products';
+if (!fs.existsSync(PRODUCT_DIR)) {
+  fs.mkdirSync(PRODUCT_DIR, { recursive: true });
+}
+
+const productStorage = multer.diskStorage({
+  destination: (_req, _file, cb) => {
+    cb(null, PRODUCT_DIR);
+  },
+  filename: (_req, file, cb) => {
+    const ext = path.extname(file.originalname);
+    const random = crypto.randomBytes(16).toString('hex');
+    cb(null, `${Date.now()}-${random}${ext}`);
+  },
+});
+
+const PRODUCT_ALLOWED = ['image/jpeg', 'image/png', 'image/webp'];
+
+export const productUpload = multer({
+  storage: productStorage,
+  limits: { fileSize: 5 * 1024 * 1024 }, // 5MB
+  fileFilter: (_req, file, cb) => {
+    if (PRODUCT_ALLOWED.includes(file.mimetype)) {
+      cb(null, true);
+    } else {
+      cb(new Error('Only JPG, PNG, or WEBP allowed'));
     }
   },
 });

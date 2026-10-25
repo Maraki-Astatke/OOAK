@@ -20,6 +20,7 @@ import notificationRoutes from './routes/notification.routes.js';
 import { initTelegramBot } from './services/telegram.service.js';
 import { initEmailTransporter } from './services/email.service.js';
 import aiRoutes from './routes/ai.routes.js';
+import uploadRoutes from './routes/upload.routes.js';
 
 const app = express();
 
@@ -110,6 +111,7 @@ app.use('/api/gifts', giftRoutes);
 app.use('/api/lookbooks', lookbookRoutes);
 app.use('/api/notifications', notificationRoutes);
 app.use('/api/ai', aiRoutes);
+app.use('/api/upload', uploadRoutes);
 
 
 app.get('/api', (_req: Request, res: Response) => {
