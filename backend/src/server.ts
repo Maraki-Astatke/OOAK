@@ -21,6 +21,7 @@ import { initTelegramBot } from './services/telegram.service.js';
 import { initEmailTransporter } from './services/email.service.js';
 import aiRoutes from './routes/ai.routes.js';
 import uploadRoutes from './routes/upload.routes.js';
+import AddProduct from './pages/admin/AddProduct';
 
 const app = express();
 
