@@ -6,6 +6,7 @@ interface Product {
   name: string;
   price: string;
   isPreOrder: boolean;
+  images?: string[];
 }
 
 export default function ProductCard({ product, index = 0 }: { product: Product, index?: number }) {
@@ -17,23 +18,23 @@ export default function ProductCard({ product, index = 0 }: { product: Product, 
       transition={{ duration: 0.6, delay: index * 0.1 }}
     >
       <Link to={`/product/${product.id}`} className="group flex flex-col bg-brand-silver rounded-sm overflow-hidden hover:shadow-2xl transition-all duration-500">
-        <div className="aspect-[4/5] bg-gray-200 relative overflow-hidden">
-           <div className="absolute inset-0 flex items-center justify-center text-gray-400 font-medium group-hover:scale-105 transition-transform duration-700">
-              [ Image ]
-           </div>
+              <div className="aspect-[4/5] bg-gray-200 relative overflow-hidden">
+           {product.images && product.images.length > 0 ? (
+             <img 
+               src={product.images[0]} 
+               alt={product.name} 
+               className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" 
+             />
+           ) : (
+             <div className="absolute inset-0 flex items-center justify-center text-gray-400 font-medium group-hover:scale-105 transition-transform duration-700">
+                [ No Image ]
+             </div>
+           )}
            {product.isPreOrder && (
-             <span className="absolute top-4 left-4 bg-brand-burgundy text-white text-[10px] font-bold px-3 py-1 rounded-sm uppercase tracking-widest shadow-md">
+             <span className="absolute top-4 left-4 bg-brand-burgundy text-white text-[10px] font-bold px-3 py-1 rounded-sm uppercase tracking-widest shadow-md z-10">
                Pre-Order
              </span>
            )}
-        </div>
-        <div className="p-6 flex flex-col flex-grow text-center bg-white border-t border-brand-burgundy/10">
-          <h3 className="text-xl font-serif text-brand-burgundy group-hover:text-brand-burgundy-dark transition-colors mb-2">
-            {product.name}
-          </h3>
-          <p className="text-brand-grey font-sans font-medium">
-            ${product.price}
-          </p>
         </div>
       </Link>
     </motion.div>

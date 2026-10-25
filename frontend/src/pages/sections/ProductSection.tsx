@@ -1,13 +1,29 @@
+import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import ProductGrid from '../../components/ProductGrid'; // Note the ../../
-
-const dummyProducts = [
-  { id: '1', name: 'The Urban Backpack', price: '59.99', isPreOrder: false },
-  { id: '2', name: 'Minimalist Tote', price: '45.00', isPreOrder: false },
-  { id: '3', name: 'Limited Leather Crossbody', price: '75.00', isPreOrder: true },
-];
+import ProductGrid from '../../components/ProductGrid';
+import { getProducts } from '../../api/products';
+import type { Product } from '../../types';
 
 export default function ProductSection() {
+  const [products, setProducts] = useState<Product[]>([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const fetchProducts = async () => {
+      try {
+        const data = await getProducts();
+        // Show only the first 3 products on the home page
+        setProducts(data.slice(0, 3));
+      } catch (error) {
+        console.error("Failed to fetch products", error);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchProducts();
+  }, []);
+
   return (
     <section id="shop" className="py-24 px-6 md:px-16 max-w-7xl mx-auto w-full bg-white">
       <div className="flex justify-between items-end mb-12">
@@ -20,7 +36,13 @@ export default function ProductSection() {
         </Link>
       </div>
 
-      <ProductGrid products={dummyProducts} />
+      {loading ? (
+        <div className="text-center py-20 text-brand-burgundy font-serif text-2xl animate-pulse">
+          Loading Collection...
+        </div>
+      ) : (
+        <ProductGrid products={products} />
+      )}
     </section>
   );
 }
