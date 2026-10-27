@@ -71,14 +71,24 @@ export default function AddProduct() {
           {/* Image Upload */}
           <div>
             <label className="block text-sm font-bold text-brand-burgundy mb-2">Product Image</label>
-            <div className="border-2 border-dashed border-gray-300 p-4 rounded-sm text-center">
+            <div className="border-2 border-dashed border-gray-300 rounded-sm text-center overflow-hidden">
               {imageUrl ? (
-                <div className="relative">
-                  <img src={imageUrl} alt="Preview" className="h-40 mx-auto object-cover rounded-sm" />
-                  <button type="button" onClick={() => setImageUrl('')} className="text-sm text-red-500 mt-2">Remove</button>
+                <div className="flex flex-col items-center gap-3 p-4">
+                  <img
+                    src={imageUrl}
+                    alt="Preview"
+                    className="w-full max-h-72 object-contain rounded-sm bg-gray-50"
+                  />
+                  <button
+                    type="button"
+                    onClick={() => setImageUrl('')}
+                    className="text-sm text-red-500 hover:text-red-700 font-medium"
+                  >
+                    ✕ Remove image
+                  </button>
                 </div>
               ) : (
-                <div>
+                <div className="py-10 px-4">
                   <input type="file" accept="image/*" onChange={handleImageUpload} className="hidden" id="image-upload" />
                   <label htmlFor="image-upload" className="cursor-pointer text-brand-grey hover:text-brand-burgundy">
                     {uploading ? 'Uploading...' : 'Click to upload an image'}
