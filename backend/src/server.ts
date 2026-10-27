@@ -30,7 +30,13 @@ const app = express();
 // ============================================
 
 // Helmet: sets secure HTTP headers (OWASP)
-app.use(helmet());
+// crossOriginResourcePolicy must be 'cross-origin' so the React frontend
+// (localhost:5173) can load images served from the backend (localhost:5004)
+app.use(
+  helmet({
+    crossOriginResourcePolicy: { policy: 'cross-origin' },
+  })
+);
 
 // CORS: allow only your frontend origin
 app.use(
