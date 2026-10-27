@@ -17,7 +17,7 @@ export default function ProductCard({ product, index = 0 }: { product: Product, 
       viewport={{ once: true }}
       transition={{ duration: 0.6, delay: index * 0.1 }}
     >
-      <Link to={`/product/${product.id}`} className="group flex flex-col bg-brand-silver rounded-sm overflow-hidden hover:shadow-2xl transition-all duration-500">
+      <Link to={`/product/${product.id}`} className="group flex flex-col bg-white border border-gray-100 rounded-sm overflow-hidden hover:shadow-2xl transition-all duration-500">
         <div className="relative w-full h-80 bg-white overflow-hidden">
           {product.images && product.images.length > 0 ? (
             <img

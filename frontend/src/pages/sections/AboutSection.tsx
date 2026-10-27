@@ -2,7 +2,7 @@ import { motion } from 'framer-motion';
 
 export default function AboutSection() {
   return (
-    <section id="about" className="py-24 px-6 md:px-16 max-w-7xl mx-auto w-full bg-brand-silver">
+    <section id="about" className="py-24 px-6 max-w-screen-xl mx-auto w-full bg-white">
       <div className="flex flex-col-reverse lg:flex-row items-center justify-center gap-12 lg:gap-20">
         
         {/* Left Side: Video */}

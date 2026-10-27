@@ -25,7 +25,7 @@ export default function ProductSection() {
   }, []);
 
   return (
-    <section id="shop" className="py-24 px-6 md:px-16 max-w-7xl mx-auto w-full bg-white">
+    <section id="shop" className="py-24 px-6 max-w-screen-xl mx-auto w-full bg-white">
       <div className="flex justify-between items-end mb-12">
         <div>
           <h2 className="text-4xl md:text-5xl font-serif text-brand-burgundy mb-4">The Collection</h2>

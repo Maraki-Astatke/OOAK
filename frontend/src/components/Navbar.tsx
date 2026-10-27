@@ -26,7 +26,7 @@ export default function Navbar() {
       `}</style>
 
       <nav
-        className="bg-brand-silver sticky top-0 z-50 px-6 py-2 flex justify-between items-center"
+        className="bg-white sticky top-0 z-50 px-6 py-2 flex justify-between items-center"
         style={{
           borderBottom: '1px solid rgba(74, 21, 37, 0.15)',
           boxShadow: '0 2px 10px rgba(74, 21, 37, 0.05)',

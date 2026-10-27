@@ -6,7 +6,7 @@ import ContactSection from './sections/ContactSection';
 
 export default function Home() {
   return (
-    <div className="min-h-screen flex flex-col bg-brand-silver overflow-x-hidden">
+    <div className="min-h-screen flex flex-col bg-white overflow-x-hidden">
       <Navbar />
 
       {/* HERO SECTION */}
@@ -21,7 +21,7 @@ export default function Home() {
         }}
       >
         <div className="absolute inset-0 bg-black/30" />
-        <div className="absolute inset-0 z-10 flex flex-col items-start justify-center text-left px-12 md:px-20 max-w-2xl">
+        <div className="absolute inset-0 z-10 flex flex-col items-start justify-center text-left px-6 max-w-2xl">
           <motion.h1
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
