@@ -60,11 +60,20 @@ export default function Navbar() {
           </Link>
           
           {user ? (
-            <div className="flex items-center space-x-4">
-              <span className="text-brand-burgundy font-bold text-sm">Hi, {user.name || 'User'}</span>
-              <button 
+            <div className="flex items-center space-x-3">
+              {/* Avatar circle with initials */}
+              <div
+                className="w-8 h-8 rounded-full bg-brand-burgundy flex items-center justify-center text-white text-xs font-bold uppercase flex-shrink-0 select-none"
+                title={user.name || 'User'}
+              >
+                {(user.name || 'U').split(' ').map((n: string) => n[0]).join('').slice(0, 2)}
+              </div>
+              <span className="text-brand-burgundy font-semibold text-sm truncate max-w-[110px]">
+                {user.name || 'User'}
+              </span>
+              <button
                 onClick={logout}
-                className="text-brand-grey hover:text-brand-burgundy transition-colors text-sm font-bold"
+                className="text-brand-grey hover:text-brand-burgundy transition-colors text-sm font-bold border border-brand-grey/30 hover:border-brand-burgundy px-3 py-1 rounded-full"
               >
                 Logout
               </button>
@@ -165,7 +174,7 @@ export default function Navbar() {
                 ))}
               </div>
 
-              {/* Login button – pinned to bottom */}
+              {/* Auth section – pinned to bottom */}
               <motion.div
                 initial={{ opacity: 0, y: 16 }}
                 animate={{ opacity: 1, y: 0 }}
@@ -173,14 +182,32 @@ export default function Navbar() {
                 className="px-6 pb-10 pt-4"
                 style={{ borderTop: '1px solid rgba(74,21,37,0.10)' }}
               >
-                <Link
-                  to="/login"
-                  onClick={() => setOpen(false)}
-                  className="group relative overflow-hidden flex items-center justify-center w-full border-2 border-brand-burgundy text-brand-burgundy py-3.5 rounded-full font-elegant font-bold uppercase tracking-widest text-sm transition-all duration-300 hover:text-white login-btn-animated"
-                >
-                  <span className="absolute inset-0 bg-brand-burgundy translate-y-full group-hover:translate-y-0 transition-transform duration-300 ease-in-out rounded-full" />
-                  <span className="relative z-10">Login</span>
-                </Link>
+                {user ? (
+                  <div className="flex items-center gap-4">
+                    {/* Avatar */}
+                    <div className="w-10 h-10 rounded-full bg-brand-burgundy flex items-center justify-center text-white text-sm font-bold uppercase flex-shrink-0 select-none">
+                      {(user.name || 'U').split(' ').map((n: string) => n[0]).join('').slice(0, 2)}
+                    </div>
+                    <div className="flex flex-col flex-1 min-w-0">
+                      <span className="text-brand-burgundy font-semibold text-sm truncate">{user.name || 'User'}</span>
+                      <button
+                        onClick={() => { logout(); setOpen(false); }}
+                        className="text-left text-brand-grey hover:text-brand-burgundy transition-colors text-xs font-bold uppercase tracking-widest mt-0.5"
+                      >
+                        Logout
+                      </button>
+                    </div>
+                  </div>
+                ) : (
+                  <Link
+                    to="/login"
+                    onClick={() => setOpen(false)}
+                    className="group relative overflow-hidden flex items-center justify-center w-full border-2 border-brand-burgundy text-brand-burgundy py-3.5 rounded-full font-elegant font-bold uppercase tracking-widest text-sm transition-all duration-300 hover:text-white login-btn-animated"
+                  >
+                    <span className="absolute inset-0 bg-brand-burgundy translate-y-full group-hover:translate-y-0 transition-transform duration-300 ease-in-out rounded-full" />
+                    <span className="relative z-10">Login</span>
+                  </Link>
+                )}
               </motion.div>
             </motion.aside>
           </>

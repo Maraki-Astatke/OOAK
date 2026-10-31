@@ -156,7 +156,7 @@ export default function ProductDetail() {
           {/* ── Right: Details ── */}
           <div className="w-full lg:w-1/2 flex flex-col justify-center">
             <h1 className="text-4xl md:text-5xl font-serif text-brand-burgundy mb-4">{product.name}</h1>
-            <p className="text-3xl font-sans text-brand-grey mb-6">${product.price}</p>
+            <p className="text-3xl font-sans text-brand-grey mb-6">ETB {product.price}</p>
 
             <div className="h-px w-full bg-brand-burgundy/10 mb-6"></div>
 

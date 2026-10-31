@@ -43,6 +43,11 @@ export default function ProductCard({ product, index = 0 }: { product: Product, 
             </span>
           )}
         </div>
+        {/* Card info */}
+        <div className="px-4 py-4 border-t border-gray-50">
+          <p className="font-serif text-brand-burgundy text-lg leading-snug truncate">{product.name}</p>
+          <p className="text-brand-grey font-sans text-sm mt-1 font-semibold">ETB {product.price}</p>
+        </div>
       </Link>
     </motion.div>
   );
