@@ -1,6 +1,13 @@
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 
+const BACKEND_URL = 'http://localhost:5004';
+function resolveImageUrl(path: string): string {
+  if (!path) return '';
+  if (path.startsWith('http://') || path.startsWith('https://')) return path;
+  return `${BACKEND_URL}${path.startsWith('/') ? '' : '/'}${path}`;
+}
+
 interface Product {
   id: string;
   name: string;
@@ -21,7 +28,7 @@ export default function ProductCard({ product, index = 0 }: { product: Product, 
         <div className="relative w-full h-80 bg-white overflow-hidden">
           {product.images && product.images.length > 0 ? (
             <img
-              src={product.images[0]}
+              src={resolveImageUrl(product.images[0])}
               alt={product.name}
               className="w-full h-full object-contain group-hover:scale-105 transition-transform duration-700"
             />
