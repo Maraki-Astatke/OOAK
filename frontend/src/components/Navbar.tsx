@@ -61,16 +61,13 @@ export default function Navbar() {
           
           {user ? (
             <div className="flex items-center space-x-3">
-              {/* Avatar circle with initials */}
+              {/* Avatar circle with initials — hover tooltip shows name */}
               <div
                 className="w-8 h-8 rounded-full bg-brand-burgundy flex items-center justify-center text-white text-xs font-bold uppercase flex-shrink-0 select-none"
                 title={user.name || 'User'}
               >
                 {(user.name || 'U').split(' ').map((n: string) => n[0]).join('').slice(0, 2)}
               </div>
-              <span className="text-brand-burgundy font-semibold text-sm truncate max-w-[110px]">
-                {user.name || 'User'}
-              </span>
               <button
                 onClick={logout}
                 className="text-brand-grey hover:text-brand-burgundy transition-colors text-sm font-bold border border-brand-grey/30 hover:border-brand-burgundy px-3 py-1 rounded-full"
@@ -185,18 +182,15 @@ export default function Navbar() {
                 {user ? (
                   <div className="flex items-center gap-4">
                     {/* Avatar */}
-                    <div className="w-10 h-10 rounded-full bg-brand-burgundy flex items-center justify-center text-white text-sm font-bold uppercase flex-shrink-0 select-none">
+                    <div className="w-10 h-10 rounded-full bg-brand-burgundy flex items-center justify-center text-white text-sm font-bold uppercase flex-shrink-0 select-none" title={user.name || 'User'}>
                       {(user.name || 'U').split(' ').map((n: string) => n[0]).join('').slice(0, 2)}
                     </div>
-                    <div className="flex flex-col flex-1 min-w-0">
-                      <span className="text-brand-burgundy font-semibold text-sm truncate">{user.name || 'User'}</span>
-                      <button
-                        onClick={() => { logout(); setOpen(false); }}
-                        className="text-left text-brand-grey hover:text-brand-burgundy transition-colors text-xs font-bold uppercase tracking-widest mt-0.5"
-                      >
-                        Logout
-                      </button>
-                    </div>
+                    <button
+                      onClick={() => { logout(); setOpen(false); }}
+                      className="text-brand-grey hover:text-brand-burgundy transition-colors text-sm font-bold uppercase tracking-widest border border-brand-grey/30 hover:border-brand-burgundy px-4 py-2 rounded-full"
+                    >
+                      Logout
+                    </button>
                   </div>
                 ) : (
                   <Link
