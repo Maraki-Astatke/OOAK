@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
+import { useAuth } from '../context/AuthContext';
 
 const navLinks = [
   { label: 'Home',     to: '/' },
@@ -12,6 +13,7 @@ const navLinks = [
 
 export default function Navbar() {
   const [open, setOpen] = useState(false);
+  const { user, logout } = useAuth();
 
   return (
     <>
@@ -51,17 +53,31 @@ export default function Navbar() {
         </div>
 
         {/* Desktop actions */}
+               {/* Desktop actions */}
         <div className="hidden md:flex items-center space-x-6">
           <Link to="/cart" className="hover:text-brand-burgundy-dark transition-colors text-brand-burgundy font-medium">
             🛒 Cart
           </Link>
-          <Link
-            to="/login"
-            className="group relative overflow-hidden border border-brand-burgundy text-brand-burgundy px-5 py-2 rounded-full font-elegant font-bold uppercase tracking-wide transition-all duration-300 hover:text-white login-btn-animated"
-          >
-            <span className="absolute inset-0 bg-brand-burgundy translate-y-full group-hover:translate-y-0 transition-transform duration-300 ease-in-out rounded-full" />
-            <span className="relative z-10">Login</span>
-          </Link>
+          
+          {user ? (
+            <div className="flex items-center space-x-4">
+              <span className="text-brand-burgundy font-bold text-sm">Hi, {user.name || 'User'}</span>
+              <button 
+                onClick={logout}
+                className="text-brand-grey hover:text-brand-burgundy transition-colors text-sm font-bold"
+              >
+                Logout
+              </button>
+            </div>
+          ) : (
+            <Link
+              to="/login"
+              className="group relative overflow-hidden border border-brand-burgundy text-brand-burgundy px-5 py-2 rounded-full font-elegant font-bold uppercase tracking-wide transition-all duration-300 hover:text-white login-btn-animated"
+            >
+              <span className="absolute inset-0 bg-brand-burgundy translate-y-full group-hover:translate-y-0 transition-transform duration-300 ease-in-out rounded-full" />
+              <span className="relative z-10">Login</span>
+            </Link>
+          )}
         </div>
 
         {/* Mobile: Hamburger only */}
