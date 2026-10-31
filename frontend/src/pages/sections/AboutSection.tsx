@@ -6,9 +6,9 @@ export default function AboutSection() {
     <section
       id="about"
       style={{ background: 'linear-gradient(180deg, #ffffff 0%, #f8f2f4 40%, #ffffff 100%)' }}
-      className="py-24 px-6 max-w-screen-xl mx-auto w-full"
+      className="py-16 px-6 max-w-screen-xl mx-auto w-full"
     >
-      <div className="flex flex-col-reverse lg:flex-row items-center justify-center gap-12 lg:gap-20">
+      <div className="flex flex-col-reverse lg:flex-row items-center justify-center gap-10 lg:gap-16">
 
         {/* ── Left Side: Cinematic Bag Animation ── */}
         <motion.div
@@ -16,7 +16,7 @@ export default function AboutSection() {
           whileInView={{ opacity: 1, x: 0 }}
           viewport={{ once: true, margin: '-80px' }}
           transition={{ duration: 1.2, ease: [0.22, 1, 0.36, 1] }}
-          className="w-full lg:w-1/2 relative"
+          className="w-full lg:w-5/12 relative"
         >
           {/* Outer glow frame */}
           <div style={{
@@ -29,8 +29,9 @@ export default function AboutSection() {
             <div style={{
               borderRadius: '4px',
               overflow: 'hidden',
-              aspectRatio: '4/5',
-              maxWidth: '100%',
+              aspectRatio: '3/3.5',
+              maxWidth: '340px',
+              margin: '0 auto',
             }}>
               <BagCinematic />
             </div>
@@ -68,7 +69,7 @@ export default function AboutSection() {
           whileInView={{ opacity: 1, x: 0 }}
           viewport={{ once: true, margin: '-80px' }}
           transition={{ duration: 1.2, delay: 0.15, ease: [0.22, 1, 0.36, 1] }}
-          className="w-full lg:w-1/2 flex flex-col justify-center text-left"
+          className="w-full lg:w-7/12 flex flex-col justify-center text-left"
         >
           {/* Eyebrow */}
           <motion.p
@@ -78,14 +79,14 @@ export default function AboutSection() {
             transition={{ duration: 0.9, delay: 0.3 }}
             style={{
               fontFamily: 'Cinzel, serif',
-              fontSize: '11px',
-              letterSpacing: '0.35em',
+              fontSize: '10px',
+              letterSpacing: '0.3em',
               color: '#d4af37',
               textTransform: 'uppercase',
-              marginBottom: '16px',
+              marginBottom: '10px',
               display: 'flex',
               alignItems: 'center',
-              gap: '12px',
+              gap: '10px',
             }}
           >
             <span style={{ display: 'inline-block', width: '32px', height: '1px', background: '#d4af37', flexShrink: 0 }} />
@@ -100,10 +101,10 @@ export default function AboutSection() {
             transition={{ duration: 1, delay: 0.45 }}
             style={{
               fontFamily: 'Balthazar, serif',
-              fontSize: 'clamp(2.8rem, 6vw, 4.5rem)',
+              fontSize: 'clamp(1.9rem, 4vw, 3rem)',
               color: '#4A1525',
-              lineHeight: 1.1,
-              marginBottom: '32px',
+              lineHeight: 1.15,
+              marginBottom: '18px',
             }}
           >
             Crafting <br />
@@ -117,10 +118,10 @@ export default function AboutSection() {
             viewport={{ once: true }}
             transition={{ duration: 1, delay: 0.6 }}
             style={{
-              width: '60px',
-              height: '2px',
+              width: '44px',
+              height: '1.5px',
               background: 'linear-gradient(90deg, #d4af37, #b8860b)',
-              marginBottom: '28px',
+              marginBottom: '16px',
               transformOrigin: 'left',
             }}
           />
@@ -131,14 +132,14 @@ export default function AboutSection() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 1, delay: 0.7 }}
-            style={{ display: 'flex', flexDirection: 'column', gap: '20px' }}
+            style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}
           >
-            <p style={{ fontFamily: 'Inter, sans-serif', color: '#6B7280', fontSize: '1.05rem', lineHeight: 1.8 }}>
+            <p style={{ fontFamily: 'Inter, sans-serif', color: '#6B7280', fontSize: '0.9rem', lineHeight: 1.75 }}>
               At <strong style={{ color: '#4A1525' }}>OOAK</strong>, we believe that what you carry should be as
               unique as you are. Born from a passion for minimalist design and timeless craftsmanship,
               every piece we create is infused with intention and artistry.
             </p>
-            <p style={{ fontFamily: 'Inter, sans-serif', color: '#6B7280', fontSize: '1.05rem', lineHeight: 1.8 }}>
+            <p style={{ fontFamily: 'Inter, sans-serif', color: '#6B7280', fontSize: '0.9rem', lineHeight: 1.75 }}>
               Every bag in our collection is thoughtfully designed, rigorously tested, and crafted
               with premium materials. We don't believe in fast fashion — we believe in creating
               pieces that tell a story and outlive every season.
@@ -153,9 +154,9 @@ export default function AboutSection() {
             transition={{ duration: 1, delay: 0.9 }}
             style={{
               display: 'flex',
-              gap: '32px',
-              marginTop: '40px',
-              paddingTop: '32px',
+              gap: '24px',
+              marginTop: '22px',
+              paddingTop: '20px',
               borderTop: '1px solid rgba(74,21,37,0.12)',
             }}
           >
@@ -167,7 +168,7 @@ export default function AboutSection() {
               <div key={stat.label} style={{ display: 'flex', flexDirection: 'column', gap: '4px' }}>
                 <span style={{
                   fontFamily: 'Balthazar, serif',
-                  fontSize: '1.8rem',
+                  fontSize: '1.35rem',
                   color: '#4A1525',
                   lineHeight: 1,
                 }}>
@@ -175,8 +176,8 @@ export default function AboutSection() {
                 </span>
                 <span style={{
                   fontFamily: 'Cinzel, serif',
-                  fontSize: '9px',
-                  letterSpacing: '0.25em',
+                  fontSize: '8px',
+                  letterSpacing: '0.2em',
                   color: '#d4af37',
                   textTransform: 'uppercase',
                 }}>
