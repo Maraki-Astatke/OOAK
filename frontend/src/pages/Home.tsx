@@ -30,7 +30,7 @@ export default function Home() {
             style={{ textShadow: '0 2px 20px rgba(0,0,0,0.4)' }}
           >
              Elegance <br />
-            <span className="italic">defined by you.</span>
+            <span className="italic"> <span className='text-brand-burgundy'>defined</span> by you.</span>
           </motion.h1>
 
           <motion.p
