@@ -23,8 +23,6 @@ export default function AboutSection() {
             position: 'relative',
             borderRadius: '6px',
             padding: '2px',
-            background: 'linear-gradient(135deg, rgba(212,175,55,0.6) 0%, rgba(139,26,46,0.3) 50%, rgba(212,175,55,0.6) 100%)',
-            boxShadow: '0 25px 80px rgba(0,0,0,0.35), 0 0 60px rgba(212,175,55,0.15)',
           }}>
             <div style={{
               borderRadius: '4px',
@@ -47,7 +45,7 @@ export default function AboutSection() {
               position: 'absolute',
               bottom: '-18px',
               right: '16px',
-              background: 'linear-gradient(135deg, #4A1525, #6b2038)',
+              background: 'linear-gradient(135deg, #4A1525, #9e5b70ff)',
               color: '#d4af37',
               fontFamily: 'Cinzel, serif',
               fontSize: '10px',
