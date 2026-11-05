@@ -29,8 +29,8 @@ export default function Home() {
             className="text-6xl md:text-8xl font-serif text-white mb-6 leading-tight tracking-tight"
             style={{ textShadow: '0 2px 20px rgba(0,0,0,0.4)' }}
           >
-            Define Your <br />
-            <span className="italic">Elegance.</span>
+            Everyday elegance, <br />
+            <span className="italic">defined by you.</span>
           </motion.h1>
 
           <motion.p
@@ -64,7 +64,7 @@ export default function Home() {
       <AboutSection />
       <ProductSection />
       <ContactSection />
-      
+
     </div>
   );
 }
