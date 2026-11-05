@@ -9,7 +9,7 @@ export default function Login() {
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
   const [loading, setLoading] = useState(false);
-  
+
   const { login } = useAuth();
   const navigate = useNavigate();
 
@@ -21,7 +21,7 @@ export default function Login() {
     try {
       const response = await api.post('/auth/login', { email, password });
       login(response.data.accessToken, response.data.user);
-      
+
       // Redirect based on role
       if (response.data.user.role === 'ADMIN') {
         navigate('/admin/add-product'); // Take admin to dashboard
@@ -38,9 +38,9 @@ export default function Login() {
   return (
     <div className="min-h-screen flex flex-col bg-brand-silver">
       <Navbar />
-      
+
       <main className="flex-grow flex items-center justify-center px-6 py-12">
-        <div className="w-full max-w-md bg-white p-8 rounded-sm shadow-2xl">
+        <div className="w-full max-w-md bg-white p-8 rounded-xl shadow-2xl">
           <h1 className="text-4xl font-serif text-brand-burgundy mb-2 text-center">Welcome Back</h1>
           <p className="text-brand-grey text-center mb-8 font-sans">Sign in to your OOAK account</p>
 
@@ -53,27 +53,27 @@ export default function Login() {
           <form onSubmit={handleSubmit} className="space-y-5">
             <div>
               <label className="block text-sm font-bold text-brand-burgundy mb-2">Email</label>
-              <input 
-                type="email" 
-                required 
-                value={email} 
-                onChange={(e) => setEmail(e.target.value)} 
+              <input
+                type="email"
+                required
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
                 className="w-full border border-gray-300 p-3 rounded-sm focus:outline-none focus:border-brand-burgundy"
               />
             </div>
             <div>
               <label className="block text-sm font-bold text-brand-burgundy mb-2">Password</label>
-              <input 
-                type="password" 
-                required 
-                value={password} 
-                onChange={(e) => setPassword(e.target.value)} 
+              <input
+                type="password"
+                required
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
                 className="w-full border border-gray-300 p-3 rounded-sm focus:outline-none focus:border-brand-burgundy"
               />
             </div>
 
-            <button 
-              type="submit" 
+            <button
+              type="submit"
               disabled={loading}
               className="w-full bg-brand-burgundy text-white py-4 rounded-sm font-bold tracking-widest uppercase hover:bg-brand-burgundy-dark transition-colors mt-4"
             >
