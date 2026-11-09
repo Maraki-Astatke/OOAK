@@ -109,22 +109,27 @@ export default function Cart() {
             {/* Cart Items List */}
             <div className="w-full lg:w-2/3 flex flex-col gap-6">
               {cart.items.map((item) => (
-                <div key={item.id} className="flex flex-col sm:flex-row items-center gap-6 bg-white p-4 rounded-sm shadow-sm border border-gray-100">
-                  {/* Image */}
-                  <div className="w-full sm:w-32 h-32 bg-gray-100 rounded-sm overflow-hidden flex-shrink-0">
+                <div key={item.id} className="flex flex-col sm:flex-row items-center gap-6 bg-white p-5 rounded-sm shadow-sm border border-gray-100">
+                  
+                  {/* Image - Big on mobile, fixed on desktop */}
+                  <div className="w-full sm:w-40 aspect-square bg-gray-50 rounded-sm overflow-hidden flex-shrink-0 border border-gray-100">
                     {item.product.images && item.product.images.length > 0 ? (
-                      <img src={item.product.images[0]} alt={item.product.name} className="w-full h-full object-cover" />
+                      <img 
+                        src={item.product.images[0]} 
+                        alt={item.product.name} 
+                        className="w-full h-full object-cover" 
+                      />
                     ) : (
                       <div className="w-full h-full flex items-center justify-center text-xs text-gray-400">No Image</div>
                     )}
                   </div>
 
                   {/* Details */}
-                  <div className="flex-grow text-center sm:text-left">
-                    <Link to={`/product/${item.product.id}`} className="text-xl font-serif text-brand-burgundy hover:underline">
+                  <div className="flex-grow text-center sm:text-left w-full">
+                    <Link to={`/product/${item.product.id}`} className="text-xl md:text-2xl font-serif text-brand-burgundy hover:underline">
                       {item.product.name}
                     </Link>
-                    <p className="text-brand-grey mt-1">${item.product.price}</p>
+                    <p className="text-brand-grey mt-1 md:text-lg">${item.product.price}</p>
                     {item.product.isPreOrder && (
                       <span className="inline-block mt-2 bg-brand-burgundy/10 text-brand-burgundy text-[10px] font-bold px-2 py-1 uppercase tracking-wider rounded-sm">
                         Pre-Order
@@ -132,24 +137,26 @@ export default function Cart() {
                     )}
                   </div>
 
-                  {/* Quantity Controls */}
-                  <div className="flex items-center border border-brand-grey/30 rounded-sm">
-                    <button onClick={() => handleUpdateQuantity(item.id, item.quantity - 1)} className="px-3 py-2 text-brand-burgundy hover:bg-gray-50">-</button>
-                    <span className="w-8 text-center font-bold text-brand-burgundy">{item.quantity}</span>
-                    <button onClick={() => handleUpdateQuantity(item.id, item.quantity + 1)} className="px-3 py-2 text-brand-burgundy hover:bg-gray-50">+</button>
+                  {/* Quantity & Remove */}
+                  <div className="flex flex-col sm:flex-row items-center gap-4 w-full sm:w-auto mt-4 sm:mt-0">
+                    <div className="flex items-center border border-brand-grey/30 rounded-sm">
+                      <button onClick={() => handleUpdateQuantity(item.id, item.quantity - 1)} className="px-4 py-2 text-brand-burgundy hover:bg-gray-50 text-lg">-</button>
+                      <span className="w-10 text-center font-bold text-brand-burgundy text-lg">{item.quantity}</span>
+                      <button onClick={() => handleUpdateQuantity(item.id, item.quantity + 1)} className="px-4 py-2 text-brand-burgundy hover:bg-gray-50 text-lg">+</button>
+                    </div>
+
+                    <button onClick={() => handleRemove(item.id)} className="text-red-400 hover:text-red-600 text-sm font-bold uppercase tracking-wider sm:ml-4">
+                      Remove
+                    </button>
                   </div>
 
-                  {/* Remove Button */}
-                  <button onClick={() => handleRemove(item.id)} className="text-red-400 hover:text-red-600 text-sm font-bold uppercase tracking-wider">
-                    Remove
-                  </button>
                 </div>
               ))}
             </div>
 
             {/* Order Summary */}
             <div className="w-full lg:w-1/3">
-              <div className="bg-white p-8 rounded-sm shadow-md border border-gray-100">
+              <div className="bg-white p-8 rounded-sm shadow-md border border-gray-100 sticky top-24">
                 <h2 className="text-2xl font-serif text-brand-burgundy mb-6 border-b border-gray-100 pb-4">Order Summary</h2>
                 
                 <div className="flex justify-between mb-4 text-brand-grey font-sans">
