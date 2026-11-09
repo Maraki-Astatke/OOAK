@@ -5,6 +5,7 @@ import AddProduct from './pages/admin/AddProduct';
 import { useAuth } from './context/AuthContext';
 import Shop from './pages/Shop';
 import ProductDetail from './pages/ProductDetail';
+import Cart from './pages/Cart';
 // Protected Route Component
 function AdminRoute() {
   const { user, loading } = useAuth();
@@ -28,7 +29,9 @@ function App() {
         </Route>
         <Route path="/shop" element={<Shop />} />
         <Route path="/product/:id" element={<ProductDetail />} />
+        <Route path="/cart" element={<Cart />} />
       </Routes>
+      
     </Router>
   );
 }
