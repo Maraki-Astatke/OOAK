@@ -40,8 +40,7 @@ export default function Home() {
             className="text-lg md:text-xl text-white/90 mb-10 max-w-lg"
             style={{ textShadow: '0 1px 8px rgba(0,0,0,0.35)' }}
           >
-            Discover our exclusive collection of handcrafted bags.{' '}
-            Premium quality, minimalist design, made for your everyday journey.
+          Explore our exclusive collection of handcrafted bags. Each piece is crafted with premium materials and a minimalist aesthetic, designed to accompany you on every journey of everyday life.
           </motion.p>
 
           <motion.div

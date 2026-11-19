@@ -4,8 +4,7 @@ export default function ContactSection() {
       <div className="max-w-screen-xl mx-auto px-6 text-center">
         <h2 className="text-4xl font-serif mb-6">Get in Touch</h2>
         <p className="text-white/70 font-sans mb-8">
-          Have a question about an order or a custom design request? 
-          We'd love to hear any feedback from you.
+         Have a question about an order or a custom design request? We'd love to hear from you feedback welcome too.
         </p>
         <a href="mailto:hello@ooakstore.com" className="inline-block bg-brand-silver text-brand-burgundy px-8 py-4 rounded-sm font-elegant font-bold uppercase tracking-widest text-sm hover:bg-white transition-colors mb-12">
           Email Us
